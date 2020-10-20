@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:task1_register_profil/views/covid1_page.dart';
+import 'package:task1_register_profil/views/covid2_page.dart';
 import 'package:task1_register_profil/views/profil_page.dart';
 import 'package:task1_register_profil/views/register_page.dart';
 
@@ -57,18 +59,18 @@ class _MenuPageState extends State<MenuPage> {
                   ),
                   RaisedButton(
                     color: Colors.purple,
-                    onPressed: () => onClickMenu(RegisterPage()),
+                    onPressed: () => onClickMenu(Covid1Page()),
                     child: Text(
-                      'Register',
+                      'Covid1',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
                   SizedBox(height: 50),
                   RaisedButton(
                     color: Colors.purple,
-                    onPressed: () => onClickMenu(ProfilPage()),
+                    onPressed: () => onClickMenu(Covid2Page()),
                     child: Text(
-                      'Profile',
+                      'Covid2',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
