@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_week2/views/bangun_datar.dart';
 import 'package:task_week2/views/hitung_umur.dart';
 import 'package:task_week2/views/home.dart';
 import 'package:task_week2/views/login.dart';
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
         HomePage.routeName: (context) => HomePage(),
         LoginPage.routeName: (context) => LoginPage(),
         HitungUmur.routeName: (context) => HitungUmur(),
+        BangunDatar.routeName: (context) => BangunDatar(),
       },
       initialRoute: LoginPage.routeName,
     );
