@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_week2/views/hitung_umur.dart';
 import 'package:task_week2/views/home.dart';
 import 'package:task_week2/views/login.dart';
 
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
       routes: {
         HomePage.routeName: (context) => HomePage(),
         LoginPage.routeName: (context) => LoginPage(),
+        HitungUmur.routeName: (context) => HitungUmur(),
       },
       initialRoute: LoginPage.routeName,
     );

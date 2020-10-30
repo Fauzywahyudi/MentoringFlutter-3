@@ -11,9 +11,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: Text('Home'),
+        centerTitle: true,
         actions: [
           IconButton(
             icon: Icon(FontAwesomeIcons.powerOff),
@@ -23,7 +25,41 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: Container(),
+      body: Container(
+        width: size.width,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Hitung Umur',
+              style: TextStyle(fontSize: 25),
+            ),
+            SizedBox(height: 40),
+            MaterialButton(
+              onPressed: () {},
+              color: Colors.blue,
+              child: Text(
+                'Go',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            SizedBox(height: 100),
+            Text(
+              'Bangun Datar',
+              style: TextStyle(fontSize: 25),
+            ),
+            SizedBox(height: 40),
+            MaterialButton(
+              onPressed: () {},
+              color: Colors.blue,
+              child: Text(
+                'Go',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
