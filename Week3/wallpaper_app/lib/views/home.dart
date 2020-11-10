@@ -87,7 +87,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         ))),
             child: Card(
               child: Container(
-                height: 250,
+                height: 300,
                 child: Hero(
                   tag: list[index],
                   child: Image.asset(
