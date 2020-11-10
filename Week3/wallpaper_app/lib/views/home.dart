@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wallpaper_app/views/detail_image.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -43,7 +44,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               elevation: 2,
               forceElevated: innerBoxIsScrolled,
               bottom: TabBar(
-                isScrollable: true,
+                // isScrollable: true,
                 controller: _tabController,
                 indicatorWeight: 2,
                 tabs: <Widget>[
@@ -73,18 +74,31 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   Widget _fragmentTab(String kategori, List<String> list) {
     return Container(
       child: ListView.builder(
+        padding: EdgeInsets.only(top: 0),
         itemCount: list.length,
         itemBuilder: (context, index) {
-          return Card(
-            child: Container(
-              height: 250,
-              child: Image.asset(
-                _url +
-                    kategori.toLowerCase() +
-                    '/' +
-                    list[index].toLowerCase() +
-                    _format,
-                fit: BoxFit.cover,
+          return InkWell(
+            onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => DetailImage(
+                          kategori: kategori,
+                          nameFile: list[index],
+                        ))),
+            child: Card(
+              child: Container(
+                height: 250,
+                child: Hero(
+                  tag: list[index],
+                  child: Image.asset(
+                    _url +
+                        kategori.toLowerCase() +
+                        '/' +
+                        list[index].toLowerCase() +
+                        _format,
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
             ),
           );
