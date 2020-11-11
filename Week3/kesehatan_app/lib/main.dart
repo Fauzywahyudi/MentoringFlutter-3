@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kesehatan_app/views/login.dart';
+import 'package:kesehatan_app/views/register.dart';
+import 'package:kesehatan_app/views/splashscreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +17,12 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LoginPage(),
+      initialRoute: SplashScreen.routeName,
+      routes: {
+        LoginPage.routeName: (context) => LoginPage(),
+        Register.routeName: (context) => Register(),
+        SplashScreen.routeName: (context) => SplashScreen(),
+      },
     );
   }
 }

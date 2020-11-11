@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:kesehatan_app/views/register.dart';
 
 class LoginPage extends StatefulWidget {
+  static const routeName = '/login';
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -31,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
         child: SingleChildScrollView(
           child: Stack(
             children: [
-              _buildBg(),
+              buildBg(),
               _buildForm(),
             ],
           ),
@@ -40,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget _buildBg() {
+  Widget buildBg() {
     var size = MediaQuery.of(context).size;
     return Container(
       height: size.height,
@@ -113,6 +115,10 @@ class _LoginPageState extends State<LoginPage> {
             child: TextField(
               controller: _tecUsername,
               focusNode: _focUsername,
+              textInputAction: TextInputAction.next,
+              onEditingComplete: () {
+                FocusScope.of(context).requestFocus(_focPassword);
+              },
               decoration: _inputDecor('Username'),
             ),
           ),
@@ -124,6 +130,10 @@ class _LoginPageState extends State<LoginPage> {
               controller: _tecPassword,
               focusNode: _focPassword,
               obscureText: true,
+              textInputAction: TextInputAction.done,
+              onEditingComplete: () {
+                _focPassword.unfocus();
+              },
               decoration: _inputDecor('Password'),
             ),
           ),
@@ -157,7 +167,8 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 color: Colors.blue,
-                onPressed: () {},
+                onPressed: () =>
+                    Navigator.pushNamed(context, Register.routeName),
               ),
             ],
           )
