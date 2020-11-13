@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:kesehatan_app/providers/shared_referenced.dart';
 import 'package:kesehatan_app/views/berita.dart';
 import 'package:kesehatan_app/views/istilah.dart';
+import 'package:kesehatan_app/views/login.dart';
+import 'package:kesehatan_app/views/profil.dart';
 
 class HomePage extends StatefulWidget {
   static const routeName = '/home';
@@ -9,6 +12,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  DataShared _dataShared = DataShared();
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -98,7 +103,7 @@ class _HomePageState extends State<HomePage> {
                   Expanded(
                     child: InkWell(
                       onTap: () {
-                        Navigator.pushNamed(context, IstilahPage.routeName);
+                        Navigator.pushNamed(context, ProfilPage.routeName);
                       },
                       child: Card(
                         child: Container(
@@ -126,8 +131,10 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Expanded(
                     child: InkWell(
-                      onTap: () {
-                        // Navigator.pushNamed(context, BeritaPage.routeName);
+                      onTap: () async {
+                        await _dataShared.logout();
+                        Navigator.pushReplacementNamed(
+                            context, LoginPage.routeName);
                       },
                       child: Card(
                         child: Container(
