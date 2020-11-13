@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kesehatan_app/models/user.dart';
 import 'package:kesehatan_app/providers/shared_referenced.dart';
 import 'package:kesehatan_app/views/berita.dart';
 import 'package:kesehatan_app/views/istilah.dart';
@@ -13,6 +14,21 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   DataShared _dataShared = DataShared();
+
+  String nama = '';
+
+  Future<void> getData() async {
+    final User user = await _dataShared.getDataPrefUser();
+    setState(() {
+      nama = user.namaLengkap;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +50,23 @@ class _HomePageState extends State<HomePage> {
                     bottomRight: Radius.circular(40),
                   ),
                 ),
+                child: Center(
+                    child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Selamat Datang',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.white, fontSize: 25),
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      '$nama',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.white, fontSize: 30),
+                    ),
+                  ],
+                )),
               ),
               SizedBox(height: 30),
               Row(

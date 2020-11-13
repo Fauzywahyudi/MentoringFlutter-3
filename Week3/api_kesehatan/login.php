@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo json_encode($response);
     } else {
         $response['value'] = 0;
-        $response['message'] = "Login gagal";
+        $response['message'] = "Username atau Password Salah";
         echo json_encode($response);
     }
 }
