@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:kesehatan_app/providers/shared_referenced.dart';
+import 'package:kesehatan_app/views/home.dart';
 import 'package:kesehatan_app/views/login.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -13,8 +15,17 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 4),
-        () => Navigator.pushReplacementNamed(context, LoginPage.routeName));
+    Timer(Duration(seconds: 4), () => getValue());
+  }
+
+  Future<void> getValue() async {
+    DataShared dataShared = DataShared();
+    final int value = await dataShared.getValue();
+    if (value == 1) {
+      Navigator.pushReplacementNamed(context, HomePage.routeName);
+    } else {
+      Navigator.pushReplacementNamed(context, LoginPage.routeName);
+    }
   }
 
   @override
