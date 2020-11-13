@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kesehatan_app/views/home.dart';
 import 'package:kesehatan_app/views/login.dart';
 import 'package:kesehatan_app/views/register.dart';
 import 'package:kesehatan_app/views/splashscreen.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         LoginPage.routeName: (context) => LoginPage(),
         Register.routeName: (context) => Register(),
         SplashScreen.routeName: (context) => SplashScreen(),
+        HomePage.routeName: (context) => HomePage(),
       },
     );
   }

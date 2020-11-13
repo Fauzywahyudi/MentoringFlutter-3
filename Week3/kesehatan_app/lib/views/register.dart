@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:kesehatan_app/api/web_service.dart' as api;
+import 'package:kesehatan_app/api/web_service.dart';
 import 'package:http/http.dart' as http;
 import 'package:kesehatan_app/models/validasi.dart';
 import 'package:kesehatan_app/utils/toast.dart';
@@ -254,7 +254,7 @@ class _RegisterState extends State<Register> {
 
   Future<void> _register() async {
     MyToast toast = MyToast();
-    final result = await http.post(api.WebService.main + 'register.php', body: {
+    final result = await http.post(WebService.register, body: {
       "username": _tecUsername.text,
       "password": _tecPassword.text,
       "nama": _tecNama.text,
@@ -265,7 +265,7 @@ class _RegisterState extends State<Register> {
       String msg = response['message'];
       if (value == 1) {
         toast.showSuccessToast(msg);
-        Navigator.pop(context);
+        Navigator.pop(context, _tecUsername.text);
       } else {
         toast.showErrorToast(msg);
       }
