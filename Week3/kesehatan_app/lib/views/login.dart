@@ -44,13 +44,11 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        child: SingleChildScrollView(
-          child: Stack(
-            children: [
-              buildBg(),
-              _buildForm(),
-            ],
-          ),
+        child: Stack(
+          children: [
+            buildBg(),
+            _buildForm(),
+          ],
         ),
       ),
     );
@@ -60,35 +58,37 @@ class _LoginPageState extends State<LoginPage> {
     var size = MediaQuery.of(context).size;
     return Container(
       height: size.height,
-      child: Column(
-        children: [
-          Container(
-            height: size.height * 0.65,
-            color: Colors.orange[200],
-            child: Container(
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
               height: size.height * 0.65,
-              decoration: BoxDecoration(
-                color: Colors.blue[300],
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.elliptical(200, 150),
+              color: Colors.orange[200],
+              child: Container(
+                height: size.height * 0.65,
+                decoration: BoxDecoration(
+                  color: Colors.blue[300],
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.elliptical(200, 150),
+                  ),
                 ),
               ),
             ),
-          ),
-          Container(
-            color: Colors.blue[300],
-            height: size.height * 0.35,
-            child: Container(
+            Container(
+              color: Colors.blue[300],
               height: size.height * 0.35,
-              decoration: BoxDecoration(
-                color: Colors.orange[200],
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.elliptical(200, 150),
+              child: Container(
+                height: size.height * 0.35,
+                decoration: BoxDecoration(
+                  color: Colors.orange[200],
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.elliptical(200, 150),
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
