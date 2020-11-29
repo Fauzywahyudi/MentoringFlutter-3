@@ -216,7 +216,8 @@ class _LoginFormState extends State<LoginForm> {
                           fontSize: 18.0,
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () => Navigator.pushNamedAndRemoveUntil(
+                          context, RouteName.home, (route) => false),
                       textColor: Colors.white,
                       padding: const EdgeInsets.all(16.0),
                     ),

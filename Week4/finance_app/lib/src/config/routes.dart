@@ -1,4 +1,5 @@
 import 'package:finance_app/src/config/route_name.dart';
+import 'package:finance_app/src/pages/home.dart';
 import 'package:finance_app/src/pages/login.dart';
 import 'package:finance_app/src/pages/register.dart';
 import 'package:finance_app/src/pages/splashscreen.dart';
@@ -11,6 +12,7 @@ class Routes {
       RouteName.loginForm: (_) => LoginForm(),
       RouteName.register: (_) => RegisterPage(),
       RouteName.splashscreen: (_) => SplashScreen(),
+      RouteName.home: (_) => HomePage(),
     };
   }
 
