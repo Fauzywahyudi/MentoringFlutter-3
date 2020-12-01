@@ -11,6 +11,7 @@ class User {
     this.idUser,
     this.email,
     this.namaLengkap,
+    this.uang,
     this.password,
     this.jenisKelamin,
     this.alamat,
@@ -21,6 +22,7 @@ class User {
   int idUser;
   String email;
   String namaLengkap;
+  int uang;
   String password;
   String jenisKelamin;
   String alamat;
@@ -31,6 +33,7 @@ class User {
         idUser: int.parse(json["id_user"]),
         email: json["email"],
         namaLengkap: json["nama_lengkap"],
+        uang: int.parse(json["uang"]),
         password: json["password"],
         jenisKelamin: json["jenis_kelamin"],
         alamat: json["alamat"],
@@ -42,6 +45,7 @@ class User {
         "id_user": idUser.toString(),
         "email": email,
         "nama_lengkap": namaLengkap,
+        "uang": uang.toString(),
         "password": password,
         "jenis_kelamin": jenisKelamin,
         "alamat": alamat,

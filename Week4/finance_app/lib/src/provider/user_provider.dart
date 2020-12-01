@@ -2,12 +2,10 @@ import 'package:finance_app/src/config/api.dart';
 import 'package:finance_app/src/model/user.dart';
 import 'package:finance_app/src/provider/default_response.dart';
 import 'package:finance_app/src/provider/shared_preference.dart';
-import 'package:finance_app/src/widget/toast.dart';
 import 'package:http/http.dart' as http;
 
 class UserProvider {
   DataShared dataShared = DataShared();
-  MyToast toast = MyToast();
   MyResponse myResponse = MyResponse();
 
   Future<bool> onRegister(User user) async {

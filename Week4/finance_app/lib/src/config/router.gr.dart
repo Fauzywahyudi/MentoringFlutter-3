@@ -11,13 +11,14 @@ import 'package:finance_app/src/pages/splashscreen.dart';
 import 'package:finance_app/src/pages/login.dart';
 import 'package:finance_app/src/pages/register.dart';
 import 'package:finance_app/src/pages/home.dart';
+import 'package:finance_app/src/pages/form_login.dart';
 
 class Router {
   static const initialPage = '/';
   static const loginPage = '/login-page';
   static const registerPage = '/register-page';
   static const homePage = '/home-page';
-  static const loginForm = '/login-form';
+  static const formLogin = '/form-login';
   static GlobalKey<NavigatorState> get navigatorKey =>
       getNavigatorKey<Router>();
   static NavigatorState get navigator => navigatorKey.currentState;
@@ -45,9 +46,9 @@ class Router {
           builder: (_) => HomePage(),
           settings: settings,
         );
-      case Router.loginForm:
+      case Router.formLogin:
         return MaterialPageRoute(
-          builder: (_) => LoginForm(),
+          builder: (_) => FormLogin(),
           settings: settings,
         );
       default:

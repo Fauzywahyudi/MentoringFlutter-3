@@ -21,3 +21,5 @@ InputDecoration inputDecoration(String hint) => InputDecoration(
           fontWeight: FontWeight.bold,
           backgroundColor: Colors.red),
     );
+
+TextStyle textMenu = TextStyle(fontWeight: FontWeight.bold, fontSize: 18);
