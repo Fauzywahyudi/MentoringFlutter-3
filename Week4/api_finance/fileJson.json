@@ -1,0 +1,22 @@
+[
+    {
+        "id_user": "1",
+        "email": "fauzy@gmail.com",
+        "nama_lengkap": "Fauzy Wahyudi",
+        "password": "abcdefghijkl",
+        "jenis_kelamin": "Laki-laki",
+        "alamat": "Solok Kota",
+        "create_at": "2020-12-02 00:14:03",
+        "update_at": "2020-12-02 00:14:03"
+    },
+    {
+        "id_user": "2",
+        "email": "fauzy1@gmail.com",
+        "nama_lengkap": "drg. Rully Arimbi",
+        "password": "1234566",
+        "jenis_kelamin": "Laki-laki",
+        "alamat": "Solok Kota",
+        "create_at": "2020-12-02 00:26:04",
+        "update_at": "2020-12-02 00:26:04"
+    }
+]

@@ -1,6 +1,5 @@
 import 'dart:async';
-
-import 'package:finance_app/src/config/route_name.dart';
+import 'package:finance_app/src/config/router.gr.dart';
 import 'package:flutter/material.dart';
 // import 'package:marketplace/provider/shared_preference.dart';
 // import 'package:marketplace/utils/name_route.dart';
@@ -15,7 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(Duration(seconds: 4),
-        () => Navigator.pushReplacementNamed(context, RouteName.login));
+        () => Router.navigator.pushNamed(Router.loginPage));
   }
 
   // void _cekUser() async {

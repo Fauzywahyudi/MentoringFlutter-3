@@ -1,5 +1,4 @@
-import 'package:finance_app/src/config/route_name.dart';
-import 'package:finance_app/src/config/routes.dart';
+import 'package:finance_app/src/config/router.gr.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,9 +15,9 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: RouteName.splashscreen,
-      routes: Routes.getRoute(),
-      onGenerateRoute: (settings) => Routes.onGenerateRoute(settings),
+      initialRoute: Router.initialPage,
+      onGenerateRoute: Router.onGenerateRoute,
+      navigatorKey: Router.navigatorKey,
     );
   }
 }

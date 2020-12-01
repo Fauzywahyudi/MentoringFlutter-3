@@ -1,4 +1,4 @@
-import 'package:finance_app/src/config/route_name.dart';
+import 'package:finance_app/src/config/router.gr.dart';
 import 'package:finance_app/src/res/assets.dart';
 import 'package:finance_app/src/theme/decoration.dart';
 import 'package:flutter/material.dart';
@@ -81,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                           style: TextStyle(color: Colors.white),
                         ),
                         onPressed: () =>
-                            Navigator.pushNamed(context, RouteName.register),
+                            Router.navigator.pushNamed(Router.registerPage),
                       ),
                     ),
                     const SizedBox(height: 30.0),
@@ -90,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                       WidgetSpan(
                           child: InkWell(
                         onTap: () =>
-                            Navigator.pushNamed(context, RouteName.loginForm),
+                            Router.navigator.pushNamed(Router.loginForm),
                         child: Text("Log in",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -216,8 +216,8 @@ class _LoginFormState extends State<LoginForm> {
                           fontSize: 18.0,
                         ),
                       ),
-                      onPressed: () => Navigator.pushNamedAndRemoveUntil(
-                          context, RouteName.home, (route) => false),
+                      onPressed: () => Router.navigator.pushNamedAndRemoveUntil(
+                          Router.homePage, (route) => false),
                       textColor: Colors.white,
                       padding: const EdgeInsets.all(16.0),
                     ),
