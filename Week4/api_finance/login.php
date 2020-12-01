@@ -8,11 +8,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $queryCek = "SELECT * FROM user WHERE email='$email' AND password='$pass'";
 
-    $sqlCek = $kon->query($query);
+    $sqlCek = $kon->query($queryCek);
 
     $resultCek = $sqlCek->fetch_assoc();
 
-    if (isset($result)) {
+    if (isset($resultCek)) {
         $response['value'] = 1;
         $response['message'] = "Login berhasil";
         $response['data'] = $resultCek;

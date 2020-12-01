@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:finance_app/src/config/api.dart';
 import 'package:finance_app/src/model/user.dart';
 import 'package:finance_app/src/provider/default_response.dart';
@@ -21,24 +19,12 @@ class UserProvider {
     return myResponse.boolResponse(response);
   }
 
-  Future<User> onLogin(User user) async {
-    final result = await http.post(Api.login, body: {
-      'email': user.email,
-      'password': user.password,
+  Future<User> onLogin(User model) async {
+    final response = await http.post(Api.login, body: {
+      'email': model.email,
+      'password': model.password,
     });
-    if (result.statusCode == 200) {
-      final response = jsonDecode(result.body);
-      int value = response['value'];
-      if (value == 1) {
-        final user = User.fromJson(response['data']);
-        await dataShared.setUserPref(user);
-        return user;
-      } else {
-        return null;
-      }
-    } else {
-      //show notif
-      return null;
-    }
+    final user = await myResponse.userResponse(response);
+    return user;
   }
 }

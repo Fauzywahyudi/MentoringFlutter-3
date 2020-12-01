@@ -1,28 +1,53 @@
 import 'dart:convert';
 
+import 'package:finance_app/src/model/user.dart';
+import 'package:finance_app/src/provider/shared_preference.dart';
 import 'package:finance_app/src/widget/toast.dart';
 import 'package:http/http.dart';
 
 class MyResponse {
   MyToast toast = MyToast();
+  DataShared dataShared = DataShared();
+  static const _failConnect = 'Koneksi gagal';
+  static const _message = 'message';
+  static const _value = 'value';
+  static const _data = 'data';
 
   bool boolResponse(Response response) {
     if (response.statusCode == 200) {
       final result = jsonDecode(response.body);
-      int value = result['value'];
+      int value = result[_value];
       if (value == 1) {
-        toast.success(result['message']);
+        toast.success(result[_message]);
         return true;
       } else if (value == 2) {
-        toast.info(result['message']);
+        toast.info(result[_message]);
         return false;
       } else {
-        toast.failed(result['message']);
+        toast.failed(result[_message]);
         return false;
       }
     } else {
-      toast.failed('Koneksi gagal');
+      toast.failed(_failConnect);
       return false;
+    }
+  }
+
+  Future<User> userResponse(Response response) async {
+    if (response.statusCode == 200) {
+      final result = jsonDecode(response.body);
+      int value = result[_value];
+      if (value == 1) {
+        final user = User.fromJson(result[_data]);
+        await dataShared.setUserPref(user);
+        return user;
+      } else {
+        toast.failed(result[_message]);
+        return null;
+      }
+    } else {
+      toast.failed(_failConnect);
+      return null;
     }
   }
 }

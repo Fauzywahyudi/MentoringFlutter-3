@@ -1,6 +1,12 @@
 import 'package:finance_app/src/config/router.gr.dart';
+import 'package:finance_app/src/model/user.dart';
+import 'package:finance_app/src/provider/user_provider.dart';
 import 'package:finance_app/src/res/assets.dart';
 import 'package:finance_app/src/theme/decoration.dart';
+import 'package:finance_app/src/validation/register_validation.dart';
+import 'package:finance_app/src/widget/button.dart';
+import 'package:finance_app/src/widget/logo.dart';
+import 'package:finance_app/src/widget/text.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -12,6 +18,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final String backImg = finance3;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -113,7 +120,21 @@ class LoginForm extends StatefulWidget {
   _LoginFormState createState() => _LoginFormState();
 }
 
-class _LoginFormState extends State<LoginForm> {
+class _LoginFormState extends State<LoginForm> with RegisterValidation {
+  final formKey = GlobalKey<FormState>();
+
+  var _tecEmail = TextEditingController();
+  var _tecPassword = TextEditingController();
+
+  var _focEmail = FocusNode();
+  var _focPassword = FocusNode();
+
+  String _email;
+  String _password;
+  bool _obscurePass = true;
+  bool _isLoading = false;
+  IconData get _iconPass =>
+      _obscurePass ? Icons.visibility : Icons.visibility_off;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -133,117 +154,87 @@ class _LoginFormState extends State<LoginForm> {
               padding: const EdgeInsets.all(32.0),
               child: SingleChildScrollView(
                 physics: BouncingScrollPhysics(),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    const SizedBox(height: 50.0),
-                    Hero(
-                      tag: 'icon',
-                      child: Container(
-                        height: 100,
-                        width: 100,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          shape: BoxShape.circle,
-                        ),
-                        child: Icon(
-                          FontAwesomeIcons.moneyBillWave,
-                          size: 64,
-                          color: Colors.green,
-                        ),
+                child: Form(
+                  key: formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      const SizedBox(height: 50.0),
+                      new LogoFinance(),
+                      const SizedBox(height: 10.0),
+                      new TextFinance(),
+                      const SizedBox(height: 50.0),
+                      new TextPage('LOGIN'),
+                      const SizedBox(height: 30.0),
+                      TextFormField(
+                        controller: _tecEmail,
+                        focusNode: _focEmail,
+                        keyboardType: TextInputType.emailAddress,
+                        textInputAction: TextInputAction.next,
+                        decoration: inputDecoration('Email'),
+                        validator: validateEmail,
+                        onSaved: (value) {
+                          _email = value;
+                        },
+                        onEditingComplete: () {
+                          FocusScope.of(context).requestFocus(_focPassword);
+                        },
                       ),
-                    ),
-                    const SizedBox(height: 10.0),
-                    Text(
-                      "Finance App",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 24.0,
-                          fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(height: 50.0),
-                    Text(
-                      "LOGIN",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.0,
+                      const SizedBox(height: 20.0),
+                      TextFormField(
+                        controller: _tecPassword,
+                        focusNode: _focPassword,
+                        obscureText: _obscurePass,
+                        decoration: inputDecoration('Password').copyWith(
+                            suffixIcon: IconButton(
+                                icon: Icon(_iconPass), onPressed: setObscure)),
+                        validator: validatePassword,
+                        onSaved: (value) {
+                          _password = value;
+                        },
+                        onEditingComplete: () {
+                          _focPassword.unfocus();
+                        },
                       ),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(height: 30.0),
-                    TextField(
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        enabledBorder: inputBorder,
-                        border: inputBorder,
-                        hintText: "Email",
-                        hintStyle: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w300,
-                          fontSize: 16.0,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 20.0),
-                    TextField(
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        enabledBorder: inputBorder,
-                        border: inputBorder,
-                        hintText: "Password",
-                        hintStyle: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w300,
-                          fontSize: 16.0,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 30.0),
-                    RaisedButton(
-                      elevation: 0,
-                      color: Colors.green,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-                      child: Text(
-                        "Login",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 18.0,
-                        ),
-                      ),
-                      onPressed: () => Router.navigator.pushNamedAndRemoveUntil(
-                          Router.homePage, (route) => false),
-                      textColor: Colors.white,
-                      padding: const EdgeInsets.all(16.0),
-                    ),
-                    const SizedBox(height: 40.0),
-                  ],
+                      const SizedBox(height: 30.0),
+                      _isLoading
+                          ? MyButtonLoading()
+                          : MyButton(
+                              text: 'LOGIN',
+                              onPressed: onLogin,
+                            ),
+                      const SizedBox(height: 40.0),
+                    ],
+                  ),
                 ),
               ),
             ),
           ),
-          Positioned(
-            top: 10,
-            left: 10,
-            child: SafeArea(
-              child: FloatingActionButton(
-                backgroundColor: Colors.white,
-                child: Icon(
-                  Icons.arrow_back_ios,
-                  color: Colors.green,
-                ),
-                onPressed: () => Navigator.pop(context),
-                mini: true,
-              ),
-            ),
-          )
+          BackIconButton(onPressed: onBack),
         ],
       ),
     );
   }
+
+  void onLogin() async {
+    setLoading();
+    if (formKey.currentState.validate()) {
+      formKey.currentState.save();
+      UserProvider provider = UserProvider();
+      final response =
+          await provider.onLogin(User(email: _email, password: _password));
+      if (response != null) {
+        Router.navigator
+            .pushNamedAndRemoveUntil(Router.homePage, (route) => false);
+      }
+    }
+    setLoading();
+  }
+
+  void onBack() async {
+    Navigator.pop(context);
+  }
+
+  void setLoading() => setState(() => _isLoading = !_isLoading);
+  void setObscure() => setState(() => _obscurePass = !_obscurePass);
 }
