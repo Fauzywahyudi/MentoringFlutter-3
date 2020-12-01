@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:finance_app/src/config/router.gr.dart';
 import 'package:finance_app/src/provider/shared_preference.dart';
+import 'package:finance_app/src/widget/logo.dart';
 import 'package:finance_app/src/widget/text.dart';
 import 'package:flutter/material.dart';
 // import 'package:marketplace/provider/shared_preference.dart';
@@ -43,11 +44,7 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              width: 220,
-              height: 220,
-              child: Image.asset('assets/images/money.png'),
-            ),
+            LogoFinance(size: 220),
             SizedBox(height: 20),
             TextFinanceSplash(),
             SizedBox(height: 30),

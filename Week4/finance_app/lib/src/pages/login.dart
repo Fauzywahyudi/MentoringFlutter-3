@@ -4,7 +4,6 @@ import 'package:finance_app/src/widget/logo.dart';
 import 'package:finance_app/src/widget/text.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -40,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    new LogoFinance(),
+                    new LogoFinance(size: 100),
                     const SizedBox(height: 10.0),
                     new TextFinanceGreen(),
                     const SizedBox(height: 20.0),

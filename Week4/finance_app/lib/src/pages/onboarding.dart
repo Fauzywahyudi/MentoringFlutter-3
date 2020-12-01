@@ -42,23 +42,22 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
       key: introKey,
       pages: [
         PageViewModel(
-          title: "Fractional shares",
-          body:
-              "Instead of having to buy an entire share, invest any amount you want.",
+          title: "Monitoring Finances",
+          body: "Pantau keuangan, sekarang menjadi lebih mudah.",
           image: _buildImage('onboard1'),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: "Learn as you go",
+          title: "Learn Frugality",
           body:
-              "Download the Stockpile app and master the market with our mini-lesson.",
+              "Belajar berhemat dengan informasi dan tips yang kami sediakan untuk anda.",
           image: _buildImage('onboard2'),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: "Kids and teens",
+          title: "Save Your Money",
           body:
-              "Kids and teens can track their stocks 24/7 and place trades that you approve.",
+              "Anda dapat menyimpan uang untuk mewujudkan impian dan kebutuhan lainnya.",
           image: _buildImage('onboard3'),
           decoration: pageDecoration,
         ),
