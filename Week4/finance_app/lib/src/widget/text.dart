@@ -12,6 +12,30 @@ class TextFinance extends StatelessWidget {
   }
 }
 
+class TextFinanceGreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      "Finance App",
+      style: TextStyle(
+          color: Colors.green, fontSize: 24.0, fontWeight: FontWeight.bold),
+      textAlign: TextAlign.center,
+    );
+  }
+}
+
+class TextFinanceSplash extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      "Finance App",
+      style: TextStyle(
+          color: Colors.green, fontSize: 30.0, fontWeight: FontWeight.bold),
+      textAlign: TextAlign.center,
+    );
+  }
+}
+
 class TextPage extends StatelessWidget {
   final title;
 

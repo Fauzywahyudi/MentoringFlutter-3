@@ -1,5 +1,7 @@
 import 'package:finance_app/src/config/router.gr.dart';
 import 'package:finance_app/src/res/assets.dart';
+import 'package:finance_app/src/widget/logo.dart';
+import 'package:finance_app/src/widget/text.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -38,30 +40,9 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    new Hero(
-                      tag: 'icon',
-                      child: Container(
-                        height: 100,
-                        width: 100,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          shape: BoxShape.circle,
-                        ),
-                        child: Icon(
-                          FontAwesomeIcons.moneyBillWave,
-                          size: 64,
-                          color: Colors.green,
-                        ),
-                      ),
-                    ),
+                    new LogoFinance(),
                     const SizedBox(height: 10.0),
-                    new Text(
-                      "Finance App",
-                      style: TextStyle(
-                          color: Colors.green,
-                          fontSize: 24.0,
-                          fontWeight: FontWeight.bold),
-                    ),
+                    new TextFinanceGreen(),
                     const SizedBox(height: 20.0),
                     new Text(
                         "Nutritionally balanced, easy to cook recipes. Quality fresh local ingredients.",
