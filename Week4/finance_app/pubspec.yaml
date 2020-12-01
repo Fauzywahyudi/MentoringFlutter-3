@@ -35,8 +35,9 @@ dependencies:
   cached_network_image: ^2.2.0+1
   google_nav_bar: ^3.1.0
   line_icons: ^0.2.0
-  
+  introduction_screen: ^1.0.7
   auto_route: ^0.2.1
+  flutter_svg: 
 
 dev_dependencies:
   flutter_test:

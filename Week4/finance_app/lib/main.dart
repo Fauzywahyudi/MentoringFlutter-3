@@ -1,4 +1,5 @@
 import 'package:finance_app/src/config/router.gr.dart';
+import 'package:finance_app/src/pages/onboarding.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       debugShowCheckedModeBanner: false,
+      // home: OnBoardingPage(),
       initialRoute: Router.initialPage,
       onGenerateRoute: Router.onGenerateRoute,
       navigatorKey: Router.navigatorKey,

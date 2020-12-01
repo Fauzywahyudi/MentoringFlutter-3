@@ -20,10 +20,15 @@ class _SplashScreenState extends State<SplashScreen> {
   void _cekUser() async {
     DataShared dataShared = DataShared();
     int value = await dataShared.getValue();
-    if (value == null) {
-      Router.navigator.pushReplacementNamed(Router.loginPage);
+    bool onBoarded = await dataShared.getOnboarding();
+    if (onBoarded == null) {
+      Router.navigator.pushReplacementNamed(Router.onBoardingPage);
     } else {
-      Router.navigator.pushReplacementNamed(Router.homePage);
+      if (value == null) {
+        Router.navigator.pushReplacementNamed(Router.loginPage);
+      } else {
+        Router.navigator.pushReplacementNamed(Router.homePage);
+      }
     }
   }
 

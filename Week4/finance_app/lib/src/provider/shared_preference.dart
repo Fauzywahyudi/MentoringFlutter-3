@@ -7,6 +7,7 @@ class DataShared {
   static const _nama = 'nama';
   static const _data = 'data';
   static const _uang = 'uang';
+  static const _onboard = 'onboard';
 
   Future setUserPref(User user) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
@@ -18,34 +19,39 @@ class DataShared {
     sharedPreferences.setString(_data, data);
   }
 
+  Future setOnboarding(bool value) async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    sharedPreferences.setBool(_onboard, value);
+  }
+
+  Future<bool> getOnboarding() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    return sharedPreferences.getBool(_onboard);
+  }
+
   Future<int> getId() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    int idUser = sharedPreferences.getInt(_id);
-    return idUser;
+    return sharedPreferences.getInt(_id);
   }
 
   Future<int> getValue() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    int value = sharedPreferences.getInt(_value);
-    return value;
+    return sharedPreferences.getInt(_value);
   }
 
   Future<int> getUang() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    int value = sharedPreferences.getInt(_uang);
-    return value;
+    return sharedPreferences.getInt(_uang);
   }
 
   Future<String> getNama() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    String value = sharedPreferences.getString(_nama);
-    return value;
+    return sharedPreferences.getString(_nama);
   }
 
   Future<String> getData() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    String value = sharedPreferences.getString(_data);
-    return value;
+    return sharedPreferences.getString(_data);
   }
 
   Future clearAll() async {
