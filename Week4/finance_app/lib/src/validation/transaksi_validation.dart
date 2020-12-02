@@ -1,8 +1,10 @@
 class TransaksiValidation {
   String validateJumlah(String value) {
     try {
-      if (value.isEmpty) return 'Required';
-      if (!(int.parse(value) is int)) return 'Format jumlah tidak valid';
+      var separator = value.split('.');
+      String newValue = separator.first.replaceAll(',', '');
+      if (newValue.isEmpty) return 'Required';
+      if (!(int.parse(newValue) is int)) return 'Format jumlah tidak valid';
       return null;
     } catch (e) {
       return 'Format jumlah tidak valid';

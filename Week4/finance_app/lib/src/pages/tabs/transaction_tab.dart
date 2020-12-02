@@ -8,6 +8,7 @@ import 'package:finance_app/src/validation/transaksi_validation.dart';
 import 'package:finance_app/src/widget/background.dart';
 import 'package:finance_app/src/widget/text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:intl/intl.dart';
 import 'package:line_icons/line_icons.dart';
 
@@ -22,7 +23,10 @@ class _TransactionTabState extends State<TransactionTab>
   final itemSize = 100.0;
   final transaksiProv = TransaksiProvider();
   TabController _tabController;
-  var f = NumberFormat.currency(decimalDigits: 0, symbol: '');
+  var f = NumberFormat.currency(
+    decimalDigits: 0,
+    symbol: '',
+  );
   int _uang = 0;
 
   @override
@@ -73,7 +77,9 @@ class _TransactionTabState extends State<TransactionTab>
                               return Center(child: CircularProgressIndicator());
                             } else if (snapshot.hasData) {
                               return snapshot.data.isEmpty
-                                  ? NoData()
+                                  ? NoData(
+                                      msg: 'Tidak Ada Data!',
+                                    )
                                   : RefreshIndicator(
                                       onRefresh: handleRefresh,
                                       child: ListView.builder(
@@ -218,7 +224,8 @@ class _DialogAddTransaksiState extends State<DialogAddTransaksi>
   final formKey = GlobalKey<FormState>();
   String _valRadio = 'in';
   Color _color = Colors.green;
-  var _tecJumlah = TextEditingController();
+  var _tecJumlah = MoneyMaskedTextController(
+      thousandSeparator: ',', decimalSeparator: '.', initialValue: 0);
   var _tecDeskripsi = TextEditingController();
   String _jumlah;
   String _deskripsi;
@@ -324,7 +331,10 @@ class _DialogAddTransaksiState extends State<DialogAddTransaksi>
   }
 
   void onChangeJumlah(String value) {
-    if (int.parse(value) > widget.uang && _valRadio == 'out') {
+    var separator = value.split('.');
+    String newValue = separator.first.replaceAll(',', '');
+    if (double.parse(newValue) > double.parse(widget.uang.toString()) &&
+        _valRadio == 'out') {
       setState(() {
         _errorJumlah = 'Saldo tidak cukup';
       });
@@ -341,8 +351,10 @@ class _DialogAddTransaksiState extends State<DialogAddTransaksi>
         _errorJumlah == null) {
       formKey.currentState.save();
       TransaksiProvider provider = TransaksiProvider();
+      var separator = _jumlah.split('.');
+      String newValue = separator.first.replaceAll(',', '');
       final response = await provider.addTransaksi(Transaksi(
-          jumlahTransaksi: int.parse(_jumlah),
+          jumlahTransaksi: int.parse(newValue),
           jenisTransaksi: _valRadio,
           deskripsi: _deskripsi));
       if (response != null) {

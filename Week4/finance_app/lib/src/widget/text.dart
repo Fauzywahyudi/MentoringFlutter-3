@@ -1,4 +1,6 @@
+import 'package:finance_app/src/theme/decoration.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class TextFinance extends StatelessWidget {
   @override
@@ -56,10 +58,24 @@ class TextPage extends StatelessWidget {
 }
 
 class NoData extends StatelessWidget {
+  final String msg;
+
+  const NoData({@required this.msg});
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('Data tidak ditemukan'),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          height: 200,
+          width: 200,
+          child: SvgPicture.asset('assets/images/empty.svg'),
+        ),
+        Text(
+          msg,
+          style: textLabel.copyWith(fontSize: 25),
+        ),
+      ],
     );
   }
 }
