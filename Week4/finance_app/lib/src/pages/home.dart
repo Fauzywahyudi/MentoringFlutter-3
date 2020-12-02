@@ -34,47 +34,59 @@ class _HomePageState extends State<HomePage> {
 
   Container _buildBottomNavBar() {
     return Container(
-      decoration: BoxDecoration(color: Colors.white, boxShadow: [
-        BoxShadow(blurRadius: 20, color: Colors.black.withOpacity(.1))
-      ]),
-      child: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
-          child: GNav(
-              gap: 8,
-              activeColor: Colors.white,
-              iconSize: 24,
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-              duration: Duration(milliseconds: 800),
-              tabBackgroundColor: Colors.grey[800],
-              tabs: [
-                GButton(
-                  icon: LineIcons.home,
-                  text: 'Home',
-                  backgroundColor: Colors.green,
-                ),
-                GButton(
-                  icon: LineIcons.money,
-                  text: 'Transaction',
-                  backgroundColor: Colors.green,
-                ),
-                GButton(
-                  icon: LineIcons.info,
-                  text: 'Info',
-                  backgroundColor: Colors.green,
-                ),
-                GButton(
-                  icon: LineIcons.user,
-                  text: 'Profile',
-                  backgroundColor: Colors.green,
-                ),
-              ],
-              selectedIndex: _selectedIndex,
-              onTabChange: (index) {
-                setState(() {
-                  _selectedIndex = index;
-                });
-              }),
+      color: Colors.grey[100],
+      padding: EdgeInsets.all(5),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.green,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 20,
+              color: Colors.black.withOpacity(.1),
+            ),
+          ],
+        ),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
+            child: GNav(
+                gap: 8,
+                activeColor: Colors.green,
+                iconSize: 24,
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                duration: Duration(milliseconds: 500),
+                tabBackgroundColor: Colors.grey[800],
+                color: Colors.white,
+                tabs: [
+                  GButton(
+                    icon: LineIcons.home,
+                    text: 'Home',
+                    backgroundColor: Colors.white,
+                  ),
+                  GButton(
+                    icon: LineIcons.money,
+                    text: 'Finance',
+                    backgroundColor: Colors.white,
+                  ),
+                  GButton(
+                    icon: LineIcons.info,
+                    text: 'Info',
+                    backgroundColor: Colors.white,
+                  ),
+                  GButton(
+                    icon: LineIcons.user,
+                    text: 'Profile',
+                    backgroundColor: Colors.white,
+                  ),
+                ],
+                selectedIndex: _selectedIndex,
+                onTabChange: (index) {
+                  setState(() {
+                    _selectedIndex = index;
+                  });
+                }),
+          ),
         ),
       ),
     );

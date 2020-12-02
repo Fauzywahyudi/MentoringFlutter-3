@@ -23,3 +23,6 @@ InputDecoration inputDecoration(String hint) => InputDecoration(
     );
 
 TextStyle textMenu = TextStyle(fontWeight: FontWeight.bold, fontSize: 18);
+TextStyle textTitle = TextStyle(fontSize: 20, fontWeight: FontWeight.bold);
+TextStyle textValue =
+    TextStyle(fontSize: 30, color: Colors.green, fontWeight: FontWeight.bold);

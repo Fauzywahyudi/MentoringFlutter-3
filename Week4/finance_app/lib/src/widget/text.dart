@@ -54,3 +54,12 @@ class TextPage extends StatelessWidget {
     );
   }
 }
+
+class NoData extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text('Data tidak ditemukan'),
+    );
+  }
+}

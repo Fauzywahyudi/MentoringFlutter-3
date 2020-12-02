@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:finance_app/src/model/transaksi.dart';
 import 'package:finance_app/src/model/user.dart';
 import 'package:finance_app/src/provider/shared_preference.dart';
 import 'package:finance_app/src/widget/toast.dart';
@@ -41,6 +42,23 @@ class MyResponse {
         final user = User.fromJson(result[_data]);
         await dataShared.setUserPref(user);
         return user;
+      } else {
+        toast.failed(result[_message]);
+        return null;
+      }
+    } else {
+      toast.failed(_failConnect);
+      return null;
+    }
+  }
+
+  Future<List<Transaksi>> listTransaksiResponse(Response response) async {
+    if (response.statusCode == 200) {
+      final result = jsonDecode(response.body);
+      int value = result[_value];
+      if (value == 1) {
+        final list = transaksiFromJson(jsonEncode(result[_data]));
+        return list;
       } else {
         toast.failed(result[_message]);
         return null;

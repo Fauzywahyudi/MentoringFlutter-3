@@ -1,7 +1,8 @@
 <?php
-require 'koneksi.php';
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    require 'koneksi.php';
     $response = array();
     $email = $_POST['email'];
     $pass = md5($_POST['password']);

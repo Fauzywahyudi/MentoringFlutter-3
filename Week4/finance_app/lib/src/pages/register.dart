@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:finance_app/src/config/router.gr.dart';
 import 'package:finance_app/src/model/user.dart';
 import 'package:finance_app/src/provider/user_provider.dart';
