@@ -1,7 +1,6 @@
 import 'package:finance_app/src/config/router.gr.dart';
 import 'package:finance_app/src/provider/shared_preference.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

@@ -1,5 +1,4 @@
 import 'package:finance_app/src/config/router.gr.dart';
-import 'package:finance_app/src/pages/onboarding.dart';
 import 'package:flutter/material.dart';
 
 void main() {
