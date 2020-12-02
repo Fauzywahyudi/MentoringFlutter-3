@@ -26,3 +26,8 @@ TextStyle textMenu = TextStyle(fontWeight: FontWeight.bold, fontSize: 18);
 TextStyle textTitle = TextStyle(fontSize: 20, fontWeight: FontWeight.bold);
 TextStyle textValue =
     TextStyle(fontSize: 30, color: Colors.green, fontWeight: FontWeight.bold);
+
+TextStyle textWhite = TextStyle(color: Colors.white);
+TextStyle textPrimary = TextStyle(color: Colors.green);
+TextStyle textDanger = TextStyle(color: Colors.red);
+TextStyle textLabel = TextStyle(color: Colors.grey);

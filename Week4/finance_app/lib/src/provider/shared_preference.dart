@@ -13,7 +13,7 @@ class DataShared {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     String data = userToJson([user]);
     sharedPreferences.setInt(_value, 1);
-    sharedPreferences.setInt(_value, user.uang);
+    sharedPreferences.setInt(_uang, user.uang);
     sharedPreferences.setInt(_id, user.idUser);
     sharedPreferences.setString(_nama, user.namaLengkap);
     sharedPreferences.setString(_data, data);

@@ -3,4 +3,5 @@ class Api {
   static const register = main + 'register.php';
   static const login = main + 'login.php';
   static const getTransaksi = main + 'getTransaksi.php';
+  static const addTransaksi = main + 'addTransaksi.php';
 }

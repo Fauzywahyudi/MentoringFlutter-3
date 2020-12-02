@@ -1,5 +1,6 @@
 import 'package:finance_app/src/config/api.dart';
 import 'package:finance_app/src/model/transaksi.dart';
+import 'package:finance_app/src/model/user.dart';
 import 'package:finance_app/src/provider/default_response.dart';
 import 'package:finance_app/src/provider/shared_preference.dart';
 import 'package:http/http.dart' as http;
@@ -16,5 +17,16 @@ class TransaksiProvider {
       'tipe': tipe,
     });
     return myResponse.listTransaksiResponse(response);
+  }
+
+  Future<User> addTransaksi(Transaksi model) async {
+    final idUser = await dataShared.getId();
+    final response = await http.post(Api.addTransaksi, body: {
+      'id_user': idUser.toString(),
+      'jumlah': model.jumlahTransaksi.toString(),
+      'jenis': model.jenisTransaksi,
+      'deskripsi': model.deskripsi,
+    });
+    return myResponse.userResponse(response);
   }
 }

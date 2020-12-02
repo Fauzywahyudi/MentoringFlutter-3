@@ -10,7 +10,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($tipe == 'all') {
         $query = getAll();
+    } else {
+        $query = byDate($tipe);
     }
+
 
     $result = $kon->query($query);
     while ($fetchData = $result->fetch_assoc()) {
@@ -39,4 +42,36 @@ function getAll()
     $id_user = $_POST['id_user'];
     $query = "SELECT * FROM transaksi WHERE id_user='$id_user' ORDER BY create_at DESC";
     return $query;
+}
+
+function byDate($tipe)
+{
+    $id_user = $_POST['id_user'];
+    $value = $_POST['value'];
+    $day = formatDate($value, 'day');
+    $month = formatDate($value, 'month');
+    $year = formatDate($value, 'year');
+    $query = '';
+    if ($tipe == 'today') {
+        $query = "SELECT * FROM transaksi WHERE id_user='$id_user' AND day(create_at)='$day' AND month(create_at)='$month' AND year(create_at)='$year' ORDER BY create_at DESC";
+    } else if ($tipe == 'month') {
+        $query = "SELECT * FROM transaksi WHERE id_user='$id_user' AND month(create_at)='$month' AND year(create_at)='$year' ORDER BY create_at DESC";
+    } else {
+        $query = "SELECT * FROM transaksi WHERE id_user='$id_user' AND year(create_at)='$year' ORDER BY create_at DESC";
+    }
+    return $query;
+}
+
+function formatDate($value, $jenis)
+{
+    if ($jenis == 'day') {
+        $result = substr($value, 8, 2);
+        return $result;
+    } else if ($jenis == 'month') {
+        $result = substr($value, 5, 2);
+        return $result;
+    } else {
+        $result = substr($value, 0, 4);
+        return $result;
+    }
 }
