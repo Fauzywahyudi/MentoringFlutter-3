@@ -63,19 +63,22 @@ class NoData extends StatelessWidget {
   const NoData({@required this.msg});
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          height: 200,
-          width: 200,
-          child: SvgPicture.asset('assets/images/empty.svg'),
-        ),
-        Text(
-          msg,
-          style: textLabel.copyWith(fontSize: 25),
-        ),
-      ],
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            height: 200,
+            width: 200,
+            child: SvgPicture.asset('assets/images/empty.svg'),
+          ),
+          Text(
+            msg,
+            style: textLabel.copyWith(fontSize: 25),
+          ),
+        ],
+      ),
     );
   }
 }

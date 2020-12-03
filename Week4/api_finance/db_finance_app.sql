@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 03 Des 2020 pada 14.11
+-- Waktu pembuatan: 03 Des 2020 pada 18.17
 -- Versi server: 10.4.6-MariaDB
 -- Versi PHP: 7.3.9
 
@@ -66,14 +66,6 @@ CREATE TABLE `transaksi` (
   `create_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `transaksi`
---
-
-INSERT INTO `transaksi` (`id_transaksi`, `id_user`, `jenis_transaksi`, `jumlah_transaksi`, `deskripsi`, `create_at`) VALUES
-(41, 10, 'in', 100000, 'Pitih Masuak', '2020-12-02 13:04:24'),
-(42, 10, 'in', 100000, 'Pilih masuak', '2020-12-03 13:10:55');
-
 -- --------------------------------------------------------
 
 --
@@ -91,13 +83,6 @@ CREATE TABLE `user` (
   `create_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `update_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `user`
---
-
-INSERT INTO `user` (`id_user`, `email`, `nama_lengkap`, `uang`, `password`, `jenis_kelamin`, `alamat`, `create_at`, `update_at`) VALUES
-(10, 'fauzy@gmail.com', 'Fauzy Wahyudi', 200000, '72cd53e213f329d3f43e8aeeb1eea363', 'Laki-laki', 'Padang', '2020-12-01 19:37:02', '2020-12-03 13:09:21');
 
 --
 -- Indexes for dumped tables
@@ -135,13 +120,13 @@ ALTER TABLE `informasi`
 -- AUTO_INCREMENT untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

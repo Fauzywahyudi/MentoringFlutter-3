@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:finance_app/src/config/router.gr.dart';
 import 'package:finance_app/src/model/transaksi.dart';
 import 'package:finance_app/src/provider/shared_preference.dart';
 import 'package:finance_app/src/provider/transaksi_provider.dart';
@@ -10,6 +9,7 @@ import 'package:finance_app/src/widget/text.dart';
 import 'package:finance_app/src/widget/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:month_picker_dialog/month_picker_dialog.dart';
 
 class TransactionTab extends StatefulWidget {
   @override
@@ -27,10 +27,12 @@ class _TransactionTabState extends State<TransactionTab>
   int _uang = 0;
   String _tipe = 'all';
   String _value = '';
+  DateTime selectedDate;
 
   @override
   void initState() {
     getUang();
+    selectedDate = DateTime.now();
     super.initState();
   }
 
@@ -237,19 +239,18 @@ class _TransactionTabState extends State<TransactionTab>
                 onTap: () => onTapDialog('all'),
               ),
               ListTile(
-                title: Text('Bulan'),
-                onTap: () => onTapDialog('bulan'),
+                title: Text('Today'),
+                onTap: () => onTapDialog('today'),
               ),
               ListTile(
-                title: Text('Tahun'),
-                onTap: () => onTapDialog('tahun'),
+                title: Text('Month'),
+                onTap: () => onTapDialog('month'),
               ),
             ],
           ),
         ),
       ),
     );
-    handleRefresh();
   }
 
   Future onDeleteTransaksi(Transaksi model) async {
@@ -279,20 +280,49 @@ class _TransactionTabState extends State<TransactionTab>
   void onTapDialog(String tipe) async {
     switch (tipe) {
       case 'all':
-        Router.navigator.pop();
-        Router.navigator.pushNamed(Router.detailTransaksi,
-            arguments: DetailTransaksiArguments(tipe: tipe, value: ''));
+        setState(() {
+          _tipe = tipe;
+          _value = '';
+        });
+        Navigator.pop(context);
         break;
-      case 'bulan':
-        print(tipe);
+      case 'month':
+        getMonthYear();
         break;
-      case 'tahun':
-        print(tipe);
+      case 'today':
+        DateTime dateNow = DateTime.now();
+        setState(() {
+          _tipe = tipe;
+          _value = '${dateNow.year}-${dateNow.month}-${dateNow.day}';
+        });
+        print(dateNow.toIso8601String());
+        Navigator.pop(context);
         break;
       default:
         print(tipe);
         break;
     }
+  }
+
+  void getMonthYear() async {
+    Navigator.pop(context);
+    showMonthPicker(
+      context: context,
+      firstDate: DateTime(DateTime.now().year - 1, 5),
+      lastDate: DateTime(DateTime.now().year + 1, 9),
+      initialDate: selectedDate ?? DateTime.now(),
+      locale: Locale("en"),
+    ).then((date) {
+      if (date != null) {
+        setState(() {
+          selectedDate = date;
+          _tipe = 'month';
+          _value =
+              '${selectedDate.year}-${selectedDate.month}-${selectedDate.day}';
+        });
+        print(selectedDate.toIso8601String());
+      }
+    });
   }
 
   Future onAddTransaksi() async {
