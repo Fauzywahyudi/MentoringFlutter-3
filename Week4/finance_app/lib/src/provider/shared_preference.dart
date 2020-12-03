@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:finance_app/src/model/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -49,9 +51,11 @@ class DataShared {
     return sharedPreferences.getString(_nama);
   }
 
-  Future<String> getData() async {
+  Future<User> getData() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    return sharedPreferences.getString(_data);
+    String data = sharedPreferences.getString(_data);
+    final list = userFromJson(data);
+    return list[0];
   }
 
   Future clearAll() async {

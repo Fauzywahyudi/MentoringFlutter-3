@@ -2,13 +2,13 @@ import 'dart:async';
 import 'package:finance_app/src/model/transaksi.dart';
 import 'package:finance_app/src/provider/shared_preference.dart';
 import 'package:finance_app/src/provider/transaksi_provider.dart';
+import 'package:finance_app/src/theme/decoration.dart';
 import 'package:finance_app/src/widget/background.dart';
 import 'package:finance_app/src/widget/dialog.dart';
 import 'package:finance_app/src/widget/text.dart';
 import 'package:finance_app/src/widget/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:line_icons/line_icons.dart';
 
 class TransactionTab extends StatefulWidget {
   @override
@@ -20,7 +20,6 @@ class _TransactionTabState extends State<TransactionTab>
   ScrollController _scrollController;
   final itemSize = 100.0;
   final transaksiProv = TransaksiProvider();
-  TabController _tabController;
   var f = NumberFormat.currency(
     decimalDigits: 0,
     symbol: '',
@@ -29,8 +28,6 @@ class _TransactionTabState extends State<TransactionTab>
 
   @override
   void initState() {
-    _tabController = TabController(length: 2, vsync: this);
-    _tabController.addListener(_listener);
     _scrollController = ScrollController();
     _scrollController.addListener(_scrollListener);
     getUang();
@@ -41,16 +38,17 @@ class _TransactionTabState extends State<TransactionTab>
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: _buildAppBar(),
       body: Container(
         width: size.width,
         height: size.height,
         color: Colors.grey[100],
         child: Stack(
           children: [
-            BackGround(),
+            BackGround(
+              title: 'Finance',
+            ),
             Container(
-              margin: EdgeInsets.only(top: 30),
+              margin: EdgeInsets.only(top: 100),
               width: size.width,
               height: size.height,
               child: SingleChildScrollView(
@@ -78,16 +76,7 @@ class _TransactionTabState extends State<TransactionTab>
                                   ? NoData(
                                       msg: 'Tidak Ada Data!',
                                     )
-                                  : RefreshIndicator(
-                                      onRefresh: handleRefresh,
-                                      child: ListView.builder(
-                                        itemCount: snapshot.data.length,
-                                        itemBuilder: (context, index) {
-                                          return _itemListTransaksi(
-                                              snapshot.data[index]);
-                                        },
-                                      ),
-                                    );
+                                  : _buildListBuilder(snapshot);
                             } else if (snapshot.hasError) {
                               return Center(
                                   child: Text(snapshot.error.toString()));
@@ -108,10 +97,23 @@ class _TransactionTabState extends State<TransactionTab>
     );
   }
 
+  Widget _buildListBuilder(AsyncSnapshot<List<Transaksi>> snapshot) {
+    return RefreshIndicator(
+      onRefresh: handleRefresh,
+      child: ListView.builder(
+        itemCount: snapshot.data.length,
+        itemBuilder: (context, index) {
+          return _itemListTransaksi(snapshot.data[index]);
+        },
+      ),
+    );
+  }
+
   Widget _itemListTransaksi(Transaksi model) {
     DateTime date = model.createAt;
     return Card(
       child: ExpansionTile(
+        key: ValueKey(model.idTransaksi),
         leading: Container(
           decoration: BoxDecoration(
             color: model.jenisTransaksi == 'in' ? Colors.green : Colors.red,
@@ -150,6 +152,62 @@ class _TransactionTabState extends State<TransactionTab>
                 '${date.hour}:${date.minute < 10 ? '0${date.minute}' : date.minute} ${date.day}-${date.month}-${date.year}')
           ],
         ),
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          'Deskripsi',
+                          style: textLabel,
+                        ),
+                      ],
+                    ),
+                    Divider(),
+                    Text(
+                      model.deskripsi,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+                Container(
+                  decoration:
+                      BoxDecoration(color: Colors.red, shape: BoxShape.circle),
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.delete,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {
+                      final snackBar = SnackBar(
+                        content: Text('Undo delete action?'),
+                        action: SnackBarAction(
+                          label: 'Undo',
+                          onPressed: () {
+                            // Some code to undo the change.
+                          },
+                        ),
+                      );
+
+                      // Find the Scaffold in the widget tree and use
+                      // it to show a SnackBar.
+                      Scaffold.of(context).showSnackBar(snackBar);
+                      setState(() {
+                        _uang = _uang - model.jumlahTransaksi;
+                      });
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -170,14 +228,6 @@ class _TransactionTabState extends State<TransactionTab>
 
   void setUang(int value) => setState(() => _uang = value);
 
-  AppBar _buildAppBar() {
-    return AppBar(
-      leading: Icon(LineIcons.money),
-      title: Text('Finance'),
-      elevation: 0,
-    );
-  }
-
   Future<Null> handleRefresh() async {
     Completer<Null> completer = new Completer<Null>();
     new Future.delayed(new Duration(milliseconds: 500)).then((_) {
@@ -188,23 +238,5 @@ class _TransactionTabState extends State<TransactionTab>
     return completer.future;
   }
 
-  _listener() {
-    print("change");
-    if (_tabController.index == 0) {
-      // setState(() {
-      //   _index = 0;
-      // });
-    }
-    if (_tabController.index == 1) {
-      // setState(() {
-      //   _index = 1;
-      // });
-    }
-  }
-
-  void _scrollListener() {
-    setState(() {
-      var index = (_scrollController.offset / itemSize).round() + 1;
-    });
-  }
+  void _scrollListener() {}
 }

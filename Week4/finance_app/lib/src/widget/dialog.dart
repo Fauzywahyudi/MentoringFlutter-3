@@ -125,8 +125,7 @@ class _DialogAddTransaksiState extends State<DialogAddTransaksi>
   }
 
   void onChangeJumlah(String value) {
-    var separator = value.split('.');
-    String newValue = separator.first.replaceAll(',', '');
+    String newValue = value.replaceAll(',', '');
     if (double.parse(newValue) > double.parse(widget.uang.toString()) &&
         _valRadio == 'out') {
       setState(() {

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:finance_app/src/model/informasi.dart';
 import 'package:finance_app/src/model/transaksi.dart';
 import 'package:finance_app/src/model/user.dart';
 import 'package:finance_app/src/provider/shared_preference.dart';
@@ -63,6 +64,16 @@ class MyResponse {
         toast.failed(result[_message]);
         return null;
       }
+    } else {
+      toast.failed(_failConnect);
+      return null;
+    }
+  }
+
+  Future<List<Informasi>> listInformasiResponse(Response response) async {
+    if (response.statusCode == 200) {
+      final result = informasiFromJson(response.body);
+      return result;
     } else {
       toast.failed(_failConnect);
       return null;

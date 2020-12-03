@@ -13,6 +13,8 @@ import 'package:finance_app/src/pages/register.dart';
 import 'package:finance_app/src/pages/home.dart';
 import 'package:finance_app/src/pages/form_login.dart';
 import 'package:finance_app/src/pages/onboarding.dart';
+import 'package:finance_app/src/pages/detail_informasi.dart';
+import 'package:finance_app/src/model/informasi.dart';
 
 class Router {
   static const initialPage = '/';
@@ -21,6 +23,7 @@ class Router {
   static const homePage = '/home-page';
   static const formLogin = '/form-login';
   static const onBoardingPage = '/on-boarding-page';
+  static const detailInformasi = '/detail-informasi';
   static GlobalKey<NavigatorState> get navigatorKey =>
       getNavigatorKey<Router>();
   static NavigatorState get navigator => navigatorKey.currentState;
@@ -56,6 +59,15 @@ class Router {
       case Router.onBoardingPage:
         return MaterialPageRoute(
           builder: (_) => OnBoardingPage(),
+          settings: settings,
+        );
+      case Router.detailInformasi:
+        if (hasInvalidArgs<Informasi>(args, isRequired: true)) {
+          return misTypedArgsRoute<Informasi>(args);
+        }
+        final typedArgs = args as Informasi;
+        return MaterialPageRoute(
+          builder: (_) => DetailInformasi(model: typedArgs),
           settings: settings,
         );
       default:
