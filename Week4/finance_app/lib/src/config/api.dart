@@ -6,5 +6,6 @@ class Api {
   static const login = main + 'login.php';
   static const getTransaksi = main + 'getTransaksi.php';
   static const addTransaksi = main + 'addTransaksi.php';
+  static const deleteTransaksi = main + 'deleteTransaksi.php';
   static const getInformasi = main + 'getInformasi.json';
 }

@@ -29,4 +29,15 @@ class TransaksiProvider {
     });
     return myResponse.userResponse(response);
   }
+
+  Future<User> deleteTransaksi(Transaksi model) async {
+    final idUser = await dataShared.getId();
+    final response = await http.post(Api.deleteTransaksi, body: {
+      'id_user': idUser.toString(),
+      'id_transaksi': model.idTransaksi.toString(),
+      'jumlah': model.jumlahTransaksi.toString(),
+      'jenis': model.jenisTransaksi,
+    });
+    return myResponse.userResponse(response);
+  }
 }

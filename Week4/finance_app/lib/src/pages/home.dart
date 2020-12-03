@@ -1,4 +1,3 @@
-import 'package:finance_app/src/pages/tabs/home_tab.dart';
 import 'package:finance_app/src/pages/tabs/info_tabs.dart';
 import 'package:finance_app/src/pages/tabs/profil_tab.dart';
 import 'package:finance_app/src/pages/tabs/transaction_tab.dart';
@@ -17,7 +16,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    _widgetOptions.add(HomeTab());
     _widgetOptions.add(TransactionTab());
     _widgetOptions.add(InfoTab());
     _widgetOptions.add(ProfilTab());
@@ -62,11 +60,6 @@ class _HomePageState extends State<HomePage> {
                   GButton(
                     icon: LineIcons.home,
                     text: 'Home',
-                    backgroundColor: Colors.white,
-                  ),
-                  GButton(
-                    icon: LineIcons.money,
-                    text: 'Finance',
                     backgroundColor: Colors.white,
                   ),
                   GButton(

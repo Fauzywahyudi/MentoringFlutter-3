@@ -1,36 +1,37 @@
 import 'dart:async';
-import 'package:finance_app/src/config/router.gr.dart';
 import 'package:finance_app/src/model/transaksi.dart';
-import 'package:finance_app/src/provider/shared_preference.dart';
 import 'package:finance_app/src/provider/transaksi_provider.dart';
 import 'package:finance_app/src/theme/decoration.dart';
 import 'package:finance_app/src/widget/background.dart';
-import 'package:finance_app/src/widget/dialog.dart';
 import 'package:finance_app/src/widget/text.dart';
-import 'package:finance_app/src/widget/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:date_time_picker/date_time_picker.dart';
 
-class TransactionTab extends StatefulWidget {
+class DetailTransaksi extends StatefulWidget {
+  final String tipe;
+  final String value;
+
+  const DetailTransaksi({@required this.tipe, @required this.value});
+
   @override
-  _TransactionTabState createState() => _TransactionTabState();
+  _DetailTransaksiState createState() => _DetailTransaksiState();
 }
 
-class _TransactionTabState extends State<TransactionTab>
-    with TickerProviderStateMixin {
-  final itemSize = 100.0;
+class _DetailTransaksiState extends State<DetailTransaksi> {
   final transaksiProv = TransaksiProvider();
   var f = NumberFormat.currency(
     decimalDigits: 0,
     symbol: '',
   );
-  int _uang = 0;
-  String _tipe = 'all';
-  String _value = '';
+
+  String _tipe;
+  String _value;
 
   @override
   void initState() {
-    getUang();
+    _tipe = widget.tipe;
+    _value = widget.value;
     super.initState();
   }
 
@@ -45,25 +46,17 @@ class _TransactionTabState extends State<TransactionTab>
         child: Stack(
           children: [
             BackGround(
-              title: 'Finance',
+              title: 'History',
             ),
             Container(
               margin: EdgeInsets.only(top: 100),
-              width: size.width,
-              height: size.height,
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    InfoCash(
-                      size: size,
-                      uang: f.format(_uang),
-                      onPressed: () => onAddTransaksi(),
-                    ),
-                    SizedBox(height: 10),
                     Container(
                       margin: EdgeInsets.symmetric(horizontal: 20),
                       width: size.width,
-                      height: size.height - (230 + kToolbarHeight * 2),
+                      height: size.height - 120,
                       child: Card(
                         child: Stack(
                           children: [
@@ -98,7 +91,7 @@ class _TransactionTabState extends State<TransactionTab>
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    _tipe.toUpperCase(),
+                                    widget.tipe.toUpperCase(),
                                     style: textWhite,
                                   ),
                                   IconButton(
@@ -158,9 +151,7 @@ class _TransactionTabState extends State<TransactionTab>
         title: RichText(
           text: TextSpan(
             text: 'Rp. ',
-            style: DefaultTextStyle.of(context)
-                .style
-                .copyWith(fontWeight: FontWeight.bold),
+            style: TextStyle(fontWeight: FontWeight.bold),
             children: <TextSpan>[
               TextSpan(
                   text: f.format(model.jumlahTransaksi),
@@ -224,6 +215,15 @@ class _TransactionTabState extends State<TransactionTab>
     );
   }
 
+  Future<Null> handleRefresh() async {
+    Completer<Null> completer = new Completer<Null>();
+    new Future.delayed(new Duration(milliseconds: 500)).then((_) {
+      completer.complete();
+      setState(() {});
+    });
+    return completer.future;
+  }
+
   Future onTapSorting() async {
     await showDialog(
       context: context,
@@ -249,7 +249,26 @@ class _TransactionTabState extends State<TransactionTab>
         ),
       ),
     );
-    handleRefresh();
+  }
+
+  void onTapDialog(String tipe) async {
+    switch (tipe) {
+      case 'all':
+        setState(() {
+          _tipe = tipe;
+          _value = '';
+        });
+        break;
+      case 'bulan':
+        getMonth();
+        break;
+      case 'tahun':
+        print(tipe);
+        break;
+      default:
+        print(tipe);
+        break;
+    }
   }
 
   Future onDeleteTransaksi(Transaksi model) async {
@@ -276,48 +295,18 @@ class _TransactionTabState extends State<TransactionTab>
     );
   }
 
-  void onTapDialog(String tipe) async {
-    switch (tipe) {
-      case 'all':
-        Router.navigator.pop();
-        Router.navigator.pushNamed(Router.detailTransaksi,
-            arguments: DetailTransaksiArguments(tipe: tipe, value: ''));
-        break;
-      case 'bulan':
-        print(tipe);
-        break;
-      case 'tahun':
-        print(tipe);
-        break;
-      default:
-        print(tipe);
-        break;
-    }
-  }
-
-  Future onAddTransaksi() async {
-    await showDialog(
-        context: context,
-        builder: (context) => DialogAddTransaksi(
-              uang: _uang,
-            ));
-    handleRefresh();
-  }
-
-  Future getUang() async {
-    DataShared dataShared = DataShared();
-    setUang(await dataShared.getUang());
-  }
-
-  void setUang(int value) => setState(() => _uang = value);
-
-  Future<Null> handleRefresh() async {
-    Completer<Null> completer = new Completer<Null>();
-    new Future.delayed(new Duration(milliseconds: 500)).then((_) {
-      completer.complete();
-      setState(() {});
-      getUang();
-    });
-    return completer.future;
+  void getMonth() {
+    DateTimePicker(
+      initialValue: '',
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2100),
+      dateLabelText: 'Date',
+      onChanged: (val) => print(val),
+      validator: (val) {
+        print(val);
+        return null;
+      },
+      onSaved: (val) => print(val),
+    );
   }
 }

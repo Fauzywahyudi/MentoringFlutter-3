@@ -15,6 +15,7 @@ import 'package:finance_app/src/pages/form_login.dart';
 import 'package:finance_app/src/pages/onboarding.dart';
 import 'package:finance_app/src/pages/detail_informasi.dart';
 import 'package:finance_app/src/model/informasi.dart';
+import 'package:finance_app/src/pages/detail_transaksi.dart';
 
 class Router {
   static const initialPage = '/';
@@ -24,6 +25,7 @@ class Router {
   static const formLogin = '/form-login';
   static const onBoardingPage = '/on-boarding-page';
   static const detailInformasi = '/detail-informasi';
+  static const detailTransaksi = '/detail-transaksi';
   static GlobalKey<NavigatorState> get navigatorKey =>
       getNavigatorKey<Router>();
   static NavigatorState get navigator => navigatorKey.currentState;
@@ -70,8 +72,29 @@ class Router {
           builder: (_) => DetailInformasi(model: typedArgs),
           settings: settings,
         );
+      case Router.detailTransaksi:
+        if (hasInvalidArgs<DetailTransaksiArguments>(args, isRequired: true)) {
+          return misTypedArgsRoute<DetailTransaksiArguments>(args);
+        }
+        final typedArgs = args as DetailTransaksiArguments;
+        return MaterialPageRoute(
+          builder: (_) =>
+              DetailTransaksi(tipe: typedArgs.tipe, value: typedArgs.value),
+          settings: settings,
+        );
       default:
         return unknownRoutePage(settings.name);
     }
   }
+}
+
+//**************************************************************************
+// Arguments holder classes
+//***************************************************************************
+
+//DetailTransaksi arguments holder class
+class DetailTransaksiArguments {
+  final String tipe;
+  final String value;
+  DetailTransaksiArguments({@required this.tipe, @required this.value});
 }
