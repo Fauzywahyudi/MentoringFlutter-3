@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:finance_app/src/model/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

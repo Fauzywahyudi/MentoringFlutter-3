@@ -10,6 +10,11 @@ class RegisterValidation {
     return null;
   }
 
+  String validateAlamat(String value) {
+    if (value.isEmpty) return 'Required';
+    return null;
+  }
+
   String validatePassword(String value) {
     if (value.isEmpty) return 'Required';
     if (value.length < 8) return 'Password Minimal 8 Karakter';

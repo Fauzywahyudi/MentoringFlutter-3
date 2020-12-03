@@ -17,7 +17,6 @@ class TransactionTab extends StatefulWidget {
 
 class _TransactionTabState extends State<TransactionTab>
     with TickerProviderStateMixin {
-  ScrollController _scrollController;
   final itemSize = 100.0;
   final transaksiProv = TransaksiProvider();
   var f = NumberFormat.currency(
@@ -28,8 +27,6 @@ class _TransactionTabState extends State<TransactionTab>
 
   @override
   void initState() {
-    _scrollController = ScrollController();
-    _scrollController.addListener(_scrollListener);
     getUang();
     super.initState();
   }
@@ -237,6 +234,4 @@ class _TransactionTabState extends State<TransactionTab>
     });
     return completer.future;
   }
-
-  void _scrollListener() {}
 }

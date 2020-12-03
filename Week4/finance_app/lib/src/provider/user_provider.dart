@@ -8,13 +8,25 @@ class UserProvider {
   DataShared dataShared = DataShared();
   MyResponse myResponse = MyResponse();
 
-  Future<bool> onRegister(User user) async {
+  Future<bool> onRegister(User model) async {
     final response = await http.post(Api.register, body: {
-      'email': user.email,
-      'nama': user.namaLengkap,
-      'password': user.password,
+      'email': model.email,
+      'nama': model.namaLengkap,
+      'password': model.password,
     });
     return myResponse.boolResponse(response);
+  }
+
+  Future<User> onUpdate(User model) async {
+    final response = await http.post(Api.updateProfil, body: {
+      'email': model.email,
+      'idUser': model.idUser.toString(),
+      'nama': model.namaLengkap,
+      'alamat': model.alamat,
+      'jenisKelamin': model.jenisKelamin,
+    });
+    final user = await myResponse.userResponse(response);
+    return user;
   }
 
   Future<User> onLogin(User model) async {
