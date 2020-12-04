@@ -41,10 +41,10 @@ class _LoginPageState extends State<LoginPage> {
                   children: <Widget>[
                     new LogoApp(size: 100),
                     const SizedBox(height: 10.0),
-                    new TextFinanceGreen(),
+                    new TextAppRed(),
                     const SizedBox(height: 20.0),
                     new Text(
-                        "Nutritionally balanced, easy to cook recipes. Quality fresh local ingredients.",
+                        "Waktu dan kesehatan adalah dua aset berharga yang tidak dikenali dan hargai sampai keduanya hilang.\n(Denis Waitley)",
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 18.0)),
                     const SizedBox(height: 30.0),
@@ -53,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: RaisedButton(
                         elevation: 0,
                         highlightElevation: 0,
-                        color: Colors.green,
+                        color: Colors.red,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0)),
                         child: Text(

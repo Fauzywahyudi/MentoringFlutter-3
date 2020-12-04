@@ -39,7 +39,7 @@ class _FormLoginState extends State<FormLogin> with RegisterValidation {
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(finance1),
+                image: AssetImage(bg2),
                 fit: BoxFit.cover,
               ),
             ),
@@ -54,9 +54,9 @@ class _FormLoginState extends State<FormLogin> with RegisterValidation {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       const SizedBox(height: 50.0),
-                      new LogoApp(size: 100),
+                      Container(child: Center(child: new LogoApp(size: 100))),
                       const SizedBox(height: 10.0),
-                      new TextFinance(),
+                      new TexApp(),
                       const SizedBox(height: 50.0),
                       new TextPage('LOGIN'),
                       const SizedBox(height: 30.0),

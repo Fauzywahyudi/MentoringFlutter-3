@@ -43,7 +43,7 @@ class _RegisterPageState extends State<RegisterPage> with RegisterValidation {
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(finance1),
+                image: AssetImage(bg2),
                 fit: BoxFit.cover,
               ),
             ),
@@ -58,9 +58,9 @@ class _RegisterPageState extends State<RegisterPage> with RegisterValidation {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       const SizedBox(height: 20.0),
-                      LogoApp(size: 100),
+                      Container(child: Center(child: LogoApp(size: 100))),
                       const SizedBox(height: 10.0),
-                      TextFinance(),
+                      TexApp(),
                       const SizedBox(height: 30.0),
                       TextPage('REGISTER'),
                       const SizedBox(height: 30.0),

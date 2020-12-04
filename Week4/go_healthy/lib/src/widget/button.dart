@@ -10,7 +10,7 @@ class MyButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return RaisedButton(
       elevation: 0,
-      color: Colors.green,
+      color: Colors.red,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(5.0),
       ),
@@ -50,7 +50,7 @@ class BackIconButton extends StatelessWidget {
           backgroundColor: Colors.white,
           child: Icon(
             Icons.arrow_back_ios,
-            color: Colors.green,
+            color: Colors.red,
           ),
           onPressed: onPressed,
           mini: true,
