@@ -41,57 +41,26 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
       key: introKey,
       pages: [
         PageViewModel(
-          title: "Monitoring Finances",
-          body: "Pantau keuangan, sekarang menjadi lebih mudah.",
+          title: "Health in Gadgets",
+          body:
+              "Gadget anda sekarang bisa jadi teman untuk bisa tetap menjaga kesehatan, apalagi dimasa pandemi.",
           image: _buildImage('onboard1'),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: "Learn Frugality",
+          title: "Learn Healthy Lifestyle",
           body:
-              "Belajar berhemat dengan informasi dan tips yang kami sediakan untuk anda.",
+              "Belajar untuk hidup sehat dengan informasi dan layanan yang kami berikan.",
           image: _buildImage('onboard2'),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: "Save Your Money",
+          title: "Reliable Source",
           body:
-              "Anda dapat menyimpan uang untuk mewujudkan impian dan kebutuhan lainnya.",
+              "Informasi dan tips hidup sehat berasal dari sumber terpercaya sehingga anda cukup fokus untuk mengikutinya.",
           image: _buildImage('onboard3'),
           decoration: pageDecoration,
         ),
-        // PageViewModel(
-        //   title: "Another title page",
-        //   body: "Another beautiful body text for this example onboarding",
-        //   image: _buildImage('onboard2'),
-        //   footer: RaisedButton(
-        //     onPressed: () {
-        //       introKey.currentState?.animateScroll(0);
-        //     },
-        //     child: const Text(
-        //       'FooButton',
-        //       style: TextStyle(color: Colors.white),
-        //     ),
-        //     color: Colors.lightBlue,
-        //     shape: RoundedRectangleBorder(
-        //       borderRadius: BorderRadius.circular(8.0),
-        //     ),
-        //   ),
-        //   decoration: pageDecoration,
-        // ),
-        // PageViewModel(
-        //   title: "Title of last page",
-        //   bodyWidget: Row(
-        //     mainAxisAlignment: MainAxisAlignment.center,
-        //     children: const [
-        //       Text("Click on ", style: bodyStyle),
-        //       Icon(Icons.edit),
-        //       Text(" to edit a post", style: bodyStyle),
-        //     ],
-        //   ),
-        //   image: _buildImage('onboard1'),
-        //   decoration: pageDecoration,
-        // ),
       ],
       onDone: () => _onIntroEnd(context),
       //onSkip: () => _onIntroEnd(context), // You can override onSkip callback
@@ -112,13 +81,3 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
     );
   }
 }
-
-// class HomePage extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(title: const Text('Home')),
-//       body: const Center(child: Text("This is the screen after Introduction")),
-//     );
-//   }
-// }

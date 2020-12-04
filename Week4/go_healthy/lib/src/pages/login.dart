@@ -11,7 +11,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final String backImg = finance3;
+  final String backImg = bg1;
 
   @override
   Widget build(BuildContext context) {
