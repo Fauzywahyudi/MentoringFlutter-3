@@ -26,13 +26,13 @@ class TextFinanceGreen extends StatelessWidget {
   }
 }
 
-class TextFinanceSplash extends StatelessWidget {
+class TextAppSplash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      "Finance App",
+      "Go Healthy",
       style: TextStyle(
-          color: Colors.green, fontSize: 30.0, fontWeight: FontWeight.bold),
+          color: Colors.red, fontSize: 30.0, fontWeight: FontWeight.bold),
       textAlign: TextAlign.center,
     );
   }

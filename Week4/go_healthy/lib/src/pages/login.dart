@@ -39,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    new LogoFinance(size: 100),
+                    new LogoApp(size: 100),
                     const SizedBox(height: 10.0),
                     new TextFinanceGreen(),
                     const SizedBox(height: 20.0),

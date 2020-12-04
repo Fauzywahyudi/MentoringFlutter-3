@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 4), () => _cekUser());
+    // Timer(Duration(seconds: 4), () => _cekUser());
   }
 
   void _cekUser() async {
@@ -40,15 +40,13 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        color: Colors.green[100],
+        color: Colors.red[100],
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            LogoFinance(size: 220),
-            SizedBox(height: 20),
-            TextFinanceSplash(),
-            SizedBox(height: 30),
-            CircularProgressIndicator(),
+            LogoApp(size: 220),
+            SizedBox(height: 100),
+            TextAppSplash(),
           ],
         ),
       ),

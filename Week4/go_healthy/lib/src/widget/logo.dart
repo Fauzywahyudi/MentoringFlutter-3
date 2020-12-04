@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_healthy/src/res/assets.dart';
+import 'package:go_healthy/src/theme/decoration.dart';
 
-class LogoFinance extends StatelessWidget {
+class LogoApp extends StatelessWidget {
   final double size;
 
-  const LogoFinance({this.size});
+  const LogoApp({this.size});
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +18,11 @@ class LogoFinance extends StatelessWidget {
           color: Colors.white,
           shape: BoxShape.circle,
         ),
-        child: Icon(
-          FontAwesomeIcons.moneyBillWave,
-          size: size - 36,
-          color: Colors.green,
+        child: Container(
+          decoration: circleContainer.copyWith(
+              image: DecorationImage(
+            image: AssetImage(appLogo),
+          )),
         ),
       ),
     );

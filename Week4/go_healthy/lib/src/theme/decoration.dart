@@ -24,6 +24,8 @@ InputDecoration inputDecoration(String hint) => InputDecoration(
 
 BoxDecoration circleIcon =
     BoxDecoration(shape: BoxShape.circle, color: Colors.green);
+BoxDecoration circleContainer =
+    BoxDecoration(shape: BoxShape.circle, color: Colors.red);
 
 TextStyle textMenu = TextStyle(fontWeight: FontWeight.bold, fontSize: 18);
 TextStyle textTitle = TextStyle(fontSize: 20, fontWeight: FontWeight.bold);

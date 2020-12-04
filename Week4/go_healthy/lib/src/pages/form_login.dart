@@ -54,7 +54,7 @@ class _FormLoginState extends State<FormLogin> with RegisterValidation {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       const SizedBox(height: 50.0),
-                      new LogoFinance(size: 100),
+                      new LogoApp(size: 100),
                       const SizedBox(height: 10.0),
                       new TextFinance(),
                       const SizedBox(height: 50.0),

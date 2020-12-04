@@ -58,7 +58,7 @@ class _RegisterPageState extends State<RegisterPage> with RegisterValidation {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       const SizedBox(height: 20.0),
-                      LogoFinance(size: 100),
+                      LogoApp(size: 100),
                       const SizedBox(height: 10.0),
                       TextFinance(),
                       const SizedBox(height: 30.0),
