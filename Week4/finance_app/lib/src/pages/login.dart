@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
                     new TextFinanceGreen(),
                     const SizedBox(height: 20.0),
                     new Text(
-                        "Nutritionally balanced, easy to cook recipes. Quality fresh local ingredients.",
+                        "If you can really count your money, then you are not a rich man.\n(J. Paul Getty)",
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 18.0)),
                     const SizedBox(height: 30.0),
