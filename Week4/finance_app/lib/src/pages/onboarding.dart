@@ -60,41 +60,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           image: _buildImage('onboard3'),
           decoration: pageDecoration,
         ),
-        // PageViewModel(
-        //   title: "Another title page",
-        //   body: "Another beautiful body text for this example onboarding",
-        //   image: _buildImage('onboard2'),
-        //   footer: RaisedButton(
-        //     onPressed: () {
-        //       introKey.currentState?.animateScroll(0);
-        //     },
-        //     child: const Text(
-        //       'FooButton',
-        //       style: TextStyle(color: Colors.white),
-        //     ),
-        //     color: Colors.lightBlue,
-        //     shape: RoundedRectangleBorder(
-        //       borderRadius: BorderRadius.circular(8.0),
-        //     ),
-        //   ),
-        //   decoration: pageDecoration,
-        // ),
-        // PageViewModel(
-        //   title: "Title of last page",
-        //   bodyWidget: Row(
-        //     mainAxisAlignment: MainAxisAlignment.center,
-        //     children: const [
-        //       Text("Click on ", style: bodyStyle),
-        //       Icon(Icons.edit),
-        //       Text(" to edit a post", style: bodyStyle),
-        //     ],
-        //   ),
-        //   image: _buildImage('onboard1'),
-        //   decoration: pageDecoration,
-        // ),
       ],
       onDone: () => _onIntroEnd(context),
-      //onSkip: () => _onIntroEnd(context), // You can override onSkip callback
       showSkipButton: true,
       skipFlex: 0,
       nextFlex: 0,
