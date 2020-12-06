@@ -44,6 +44,7 @@ class MyResponse {
       if (value == 1) {
         final user = User.fromJson(result[_data]);
         await dataShared.setUserPref(user);
+        toast.success(result[_message]);
         return user;
       } else if (value == 2) {
         toast.failed(result[_message]);

@@ -96,10 +96,10 @@ class _ProfilTabState extends State<ProfilTab> {
   Widget buildListTile(String title, VoidCallback onTap, IconData icon) {
     return Card(
       child: ListTile(
-        leading: Icon(icon, color: Colors.green),
+        leading: Icon(icon, color: Colors.red),
         title: Text(
           title,
-          style: textMenu.copyWith(color: Colors.green),
+          style: textMenu.copyWith(color: Colors.red),
         ),
         onTap: onTap,
       ),
@@ -114,11 +114,11 @@ class _ProfilTabState extends State<ProfilTab> {
   }
 
   Future _onEditProfile() async {
-    // await showDialog(
-    //     context: context,
-    //     builder: (context) => DialogEditProfil(
-    //           user: _user,
-    //         ));
+    await showDialog(
+        context: context,
+        builder: (context) => DialogEditProfil(
+              user: _user,
+            ));
     getUser();
   }
 }
