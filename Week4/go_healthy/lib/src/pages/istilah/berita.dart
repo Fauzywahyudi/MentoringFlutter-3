@@ -106,12 +106,13 @@ class _BeritaPageState extends State<BeritaPage> {
               children: [
                 Text('by ' + list['penulis']),
                 FlatButton(
-                    onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => DetailBerita(
-                                  data: list,
-                                ))),
+                    onPressed: () {},
+                    // onPressed: () => Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => DetailBerita(
+                    //               data: list,
+                    //             ))),
                     child: Text(
                       'Selengkapnya',
                       style: TextStyle(color: Colors.blue),

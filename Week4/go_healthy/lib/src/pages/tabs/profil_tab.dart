@@ -54,23 +54,47 @@ class _ProfilTabState extends State<ProfilTab> {
                         child: Column(
                           children: [
                             ListTile(
-                              leading: Icon(Icons.person),
-                              title: Text(_user.namaLengkap ?? ''),
+                              leading: Icon(
+                                Icons.person,
+                                color: Colors.red,
+                              ),
+                              title: Text(
+                                _user.namaLengkap ?? '',
+                                style: textMenu.copyWith(color: Colors.red),
+                              ),
                               subtitle: Text('Nama'),
                             ),
                             ListTile(
-                              leading: Icon(Icons.email),
-                              title: Text(_user.email ?? ''),
+                              leading: Icon(
+                                Icons.email,
+                                color: Colors.red,
+                              ),
+                              title: Text(
+                                _user.email ?? '',
+                                style: textMenu.copyWith(color: Colors.red),
+                              ),
                               subtitle: Text('Email'),
                             ),
                             ListTile(
-                              leading: Icon(Icons.wc),
-                              title: Text(_user.jenisKelamin ?? '-'),
+                              leading: Icon(
+                                Icons.wc,
+                                color: Colors.red,
+                              ),
+                              title: Text(
+                                _user.jenisKelamin ?? '-',
+                                style: textMenu.copyWith(color: Colors.red),
+                              ),
                               subtitle: Text('Jenis Kelamin'),
                             ),
                             ListTile(
-                              leading: Icon(Icons.location_on),
-                              title: Text(_user.alamat ?? '-'),
+                              leading: Icon(
+                                Icons.location_on,
+                                color: Colors.red,
+                              ),
+                              title: Text(
+                                _user.alamat ?? '-',
+                                style: textMenu.copyWith(color: Colors.red),
+                              ),
                               subtitle: Text('Alamat'),
                             ),
                           ],

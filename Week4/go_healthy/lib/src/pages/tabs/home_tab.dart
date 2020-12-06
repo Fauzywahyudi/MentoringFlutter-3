@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_healthy/src/config/router.gr.dart';
+import 'package:go_healthy/src/pages/istilah/berita.dart';
+import 'package:go_healthy/src/provider/shared_preference.dart';
 import 'package:go_healthy/src/theme/decoration.dart';
 import 'package:go_healthy/src/widget/background.dart';
 
@@ -9,6 +11,22 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
+  String _nama = '';
+  final dataShared = DataShared();
+
+  @override
+  void initState() {
+    getNama();
+    super.initState();
+  }
+
+  void getNama() async {
+    final nama = await dataShared.getNama();
+    setState(() {
+      _nama = 'Welcome $nama';
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -21,6 +39,7 @@ class _HomeTabState extends State<HomeTab> {
           children: [
             BackGround(
               title: 'Home',
+              subTitle: _nama,
             ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 10),
@@ -43,6 +62,16 @@ class _HomeTabState extends State<HomeTab> {
                           image: 'icon_kesehatan.png',
                           onTap: () => Router.navigator
                               .pushNamed(Router.istilahKesehatan),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        MenuHome(
+                          title: 'Berita \nKesehatan',
+                          image: 'news.jpg',
+                          onTap: () => Router.navigator
+                              .pushNamed(Router.beritaKesehatan),
                         ),
                       ],
                     ),

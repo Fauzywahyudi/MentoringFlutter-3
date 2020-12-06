@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $data = array();
 
     $sql = $kon->query("SELECT * FROM berita");
-    while ($fetchData = $sql->fetch_array()) {
+    while ($fetchData = $sql->fetch_assoc()) {
         $data[] = $fetchData;
     }
     if ($sql) {

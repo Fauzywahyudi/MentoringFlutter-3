@@ -19,6 +19,9 @@ import 'package:go_healthy/src/pages/detail_transaksi.dart';
 import 'package:go_healthy/src/pages/bmi/home.dart';
 import 'package:go_healthy/src/pages/bmi/result.dart';
 import 'package:go_healthy/src/pages/istilah/istilah.dart';
+import 'package:go_healthy/src/pages/berita/berita_kesehatan.dart';
+import 'package:go_healthy/src/pages/istilah/detail_berita.dart';
+import 'package:go_healthy/src/model/berita.dart';
 
 class Router {
   static const initialPage = '/';
@@ -32,6 +35,8 @@ class Router {
   static const homePageBMI = '/home-page-bm-i';
   static const resultBMI = '/result-bm-i';
   static const istilahKesehatan = '/istilah-kesehatan';
+  static const beritaKesehatan = '/berita-kesehatan';
+  static const detailBerita = '/detail-berita';
   static GlobalKey<NavigatorState> get navigatorKey =>
       getNavigatorKey<Router>();
   static NavigatorState get navigator => navigatorKey.currentState;
@@ -106,6 +111,20 @@ class Router {
       case Router.istilahKesehatan:
         return MaterialPageRoute(
           builder: (_) => IstilahKesehatan(),
+          settings: settings,
+        );
+      case Router.beritaKesehatan:
+        return MaterialPageRoute(
+          builder: (_) => BeritaKesehatan(),
+          settings: settings,
+        );
+      case Router.detailBerita:
+        if (hasInvalidArgs<Berita>(args, isRequired: true)) {
+          return misTypedArgsRoute<Berita>(args);
+        }
+        final typedArgs = args as Berita;
+        return MaterialPageRoute(
+          builder: (_) => DetailBerita(model: typedArgs),
           settings: settings,
         );
       default:

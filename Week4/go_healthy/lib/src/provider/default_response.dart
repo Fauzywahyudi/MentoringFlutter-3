@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:go_healthy/src/model/berita.dart';
 import 'package:go_healthy/src/model/informasi.dart';
 import 'package:go_healthy/src/model/istilah.dart';
 import 'package:go_healthy/src/model/transaksi.dart';
@@ -92,6 +93,23 @@ class MyResponse {
       int value = result[_value];
       if (value == 1) {
         final list = istilahFromJson(jsonEncode(result[_data]));
+        return list;
+      } else {
+        toast.failed(result[_message]);
+        return null;
+      }
+    } else {
+      toast.failed(_failConnect);
+      return null;
+    }
+  }
+
+  Future<List<Berita>> listBeritaResponse(Response response) async {
+    if (response.statusCode == 200) {
+      final result = jsonDecode(response.body);
+      int value = result[_value];
+      if (value == 1) {
+        final list = beritaFromJson(jsonEncode(result[_data]));
         return list;
       } else {
         toast.failed(result[_message]);

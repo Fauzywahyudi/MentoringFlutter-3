@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_healthy/src/model/istilah.dart';
 import 'package:go_healthy/src/provider/istilah_provider.dart';
 import 'package:go_healthy/src/theme/decoration.dart';

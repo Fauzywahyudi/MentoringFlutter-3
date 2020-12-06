@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_healthy/src/config/api.dart';
+import 'package:go_healthy/src/model/berita.dart';
 
 class DetailBerita extends StatefulWidget {
-  final data;
+  final Berita model;
 
-  const DetailBerita({Key key, this.data}) : super(key: key);
+  const DetailBerita({@required this.model});
   @override
   _DetailBeritaState createState() => _DetailBeritaState();
 }
@@ -15,7 +16,7 @@ class _DetailBeritaState extends State<DetailBerita> {
     var size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.data['judul']),
+        title: Text(widget.model.judul),
       ),
       body: Container(
         child: SingleChildScrollView(
@@ -25,9 +26,9 @@ class _DetailBeritaState extends State<DetailBerita> {
                 height: 250,
                 width: size.width,
                 child: Hero(
-                  tag: widget.data['id_berita'].toString(),
+                  tag: widget.model.idBerita.toString(),
                   child: Image.network(
-                    Api.images + widget.data['image'],
+                    Api.images + widget.model.image,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -36,16 +37,16 @@ class _DetailBeritaState extends State<DetailBerita> {
                 child: Column(
                   children: [
                     ListTile(
-                      title: Text(widget.data['judul']),
-                      subtitle: Text('by ' + widget.data['penulis']),
+                      title: Text(widget.model.judul),
+                      subtitle: Text('by ' + widget.model.penulis),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(widget.data['sumber']),
-                          Text(widget.data['posted_at']),
+                          Text(widget.model.sumber),
+                          Text(widget.model.postedAt.toString()),
                         ],
                       ),
                     ),
@@ -54,7 +55,7 @@ class _DetailBeritaState extends State<DetailBerita> {
               ),
               Card(
                 child: Text(
-                  widget.data['isi_berita'],
+                  widget.model.isiBerita,
                   textAlign: TextAlign.justify,
                   style: TextStyle(),
                 ),
