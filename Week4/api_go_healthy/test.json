@@ -1,0 +1,252 @@
+[
+    {
+        "id_istilah": "1",
+        "nama_istilah": "Abate",
+        "penjelasan": "Sejenis obat bubuk untuk membunuh jentik nyamuk. Adapun takaran penggunaannya: 10 liter air cukup dengan 1 gram bubuk Abate atau 100 liter air untuk 10 gram Abate (1 sendok makan peres diratakan atasnya = 10 gram Abate)."
+    },
+    {
+        "id_istilah": "2",
+        "nama_istilah": "Abatisasi",
+        "penjelasan": "Pemberantasan penyakit demam berdarah dengan menaburkan bubuk abate di bak penampung air\/drum."
+    },
+    {
+        "id_istilah": "3",
+        "nama_istilah": "Abortus = Abortion",
+        "penjelasan": "Kematian bayi dalam kandungan dengan umur kehamilan kurang dari 20 minggu. Berdasarkan penyebabnya terdapat dua macam abortus yaitu abortus disengaja (induced abortion) dan tidak disengaja (spontaneous abortion)."
+    },
+    {
+        "id_istilah": "4",
+        "nama_istilah": "Abses",
+        "penjelasan": "Kumpulan pus (nanah) yang terletak dalam satu kantung yang terbentuk dalam jaringan yang disebabkan oleh suatu proses infeksi oleh bakteri, parasit atau benda asing lainnya. Abses merupakan reaksi pertahanan yang bertujuan mencegah agen-agen infeksi menyebar ke bagian tubuh lainnya."
+    },
+    {
+        "id_istilah": "5",
+        "nama_istilah": "Acne Vulgaris = jerawat",
+        "penjelasan": "Kondisi kulit yang ditandai dengan sumbatan dan peradangan yang melibatkan folikel rambut dan kelenjar sebasea."
+    },
+    {
+        "id_istilah": "6",
+        "nama_istilah": "Addict",
+        "penjelasan": "Seseorang yang tidak dapat melawan suatu kebiasaan, terutama pemakaian obat atau alkohol, karena alasan fisiologis atau psikologis."
+    },
+    {
+        "id_istilah": "7",
+        "nama_istilah": "Alergi",
+        "penjelasan": "Kondisi di mana tubuh memiliki respon yang berlebihan terhadap suatu zat (misalnya makanan atau obat). Juga dikenal sebagai hipersensitivitas."
+    },
+    {
+        "id_istilah": "8",
+        "nama_istilah": "Alkohol",
+        "penjelasan": "Zat yang memproduksi efek ganda pada tubuh: pertama adalah efek depresan yang singkat dan kedua adalah efek agitasi pada susunan saraf pusat yang berlangsung enam kali lebih lama dari efek depresannya.Kesadaran atas kedua efek ini sangat tergantung pada kondisi susunan saraf pusat pada saat penggunaan alkohol berlangsung."
+    },
+    {
+        "id_istilah": "9",
+        "nama_istilah": "Amputasi = amputation",
+        "penjelasan": "Memotong, atau memangkas; pembuangan suatu anggota gerak atau anggota badan lain atau hasil perkembangan badan."
+    },
+    {
+        "id_istilah": "10",
+        "nama_istilah": "Autisme",
+        "penjelasan": "Kecacatan perkembangan yang kompleks sebagai hasil dari gangguan neurologis yang berdampak pada fungsi normal otak, yang memengaruhi perkembangan komunikasi seseorang dan keterampilan interaksi sosialnya. Autisme memanifestasikan diri selama tiga tahun pertama kehidupan seseorang. Para penyandang autisme memiliki masalah dengan komunikasi non-verbal, berbagai interaksi sosial, dan kegiatan yang meliputi unsur bermain dan bercanda."
+    },
+    {
+        "id_istilah": "11",
+        "nama_istilah": "Bronkospasme",
+        "penjelasan": "Kontraksi otot di sekitar saluran napas yang mempersempit saluran napas itu dan menyebabkan wheezing."
+    },
+    {
+        "id_istilah": "12",
+        "nama_istilah": "Bulimia",
+        "penjelasan": "Kelainan pola makan yang terlihat dari kebiasaan makan berlebihan, kemudian mencoba mengeluarkan kembali makanan tersebut."
+    },
+    {
+        "id_istilah": "13",
+        "nama_istilah": "Burnout",
+        "penjelasan": "Istilah digunakan untuk menggambarkan efek psikologis dari beban pekerjaan berlebihan. Indikasi dari efek ini kerap tidak jelas sehingga sering kali menyebabkan salah diagnosa. Salah satu hal yang kerap terjadi dari kelebihan bekerja sering diindikasi sebagai stress. Stres ini bisa memicu penyakit lainnya."
+    },
+    {
+        "id_istilah": "14",
+        "nama_istilah": "Demensia",
+        "penjelasan": "Penurunan fungsional yang disebabkan oleh kelainan yang terjadi pada otak. Gejala umum demensia adalah pikun, gejala lainnya seperti hilangnya memori dan perhatian, kesulitan komunikasi dan penurunan persepsi visual yang dihasilkan oleh kerusakan sel-sel otak."
+    },
+    {
+        "id_istilah": "15",
+        "nama_istilah": "Deratisasi",
+        "penjelasan": "Tatacara dimana tindakan penyehatan diambil untuk mengendalikan atau membasmi vektor-vektor rodent penyakit yang terdapat didalam bagasi, kargo, petikemas, alat angkut, fasilitas-fasilitas, barang-barang dan paket pos di pintu masuk."
+    },
+    {
+        "id_istilah": "16",
+        "nama_istilah": "Desentralisasi",
+        "penjelasan": "Penyerahan wewenang pemerintah oleh pemerintah kepada daerah Otonom untuk mengatur dan mengururs pemerintah dalam sistem Negara Kesatuan Republik Indonesia"
+    },
+    {
+        "id_istilah": "17",
+        "nama_istilah": "Desinfeksi",
+        "penjelasan": "Tindakan untuk membunuh bibit penyakit yang berada di luar tubuh."
+    },
+    {
+        "id_istilah": "18",
+        "nama_istilah": "Detoksifikasi",
+        "penjelasan": "Suatu proses intervensi medis yang bertujuan untuk membantu pecandu, penyalahguna dan korban penyalahgunaan narkotika mengatasi gejala putus zat akibat penghentian narkotika dari tubuh pecandu, penyalahguna dan korban penyalahgunaan yang mengalami ketergantungan fisik."
+    },
+    {
+        "id_istilah": "19",
+        "nama_istilah": "Ebola",
+        "penjelasan": "Sejenis virus dari genus Ebolavirus, familia Filoviridae, dan juga nama dari penyakit yang disebabkan oleh virus tersebut. Gejala-gejalanya antara lain muntah, diare, sakit badan, pendarahan dalam dan luar, dan demam. Tingkat kematian berkisar antara 80% sampai 100%. Asal kata adalah dari sungai Ebola di Kongo. Penyakit Ebola dapat ditularkan lewat kontak langsung dengan cairan tubuh atau kulit. Masa inkubasinya dari 2 sampai 21 hari, umumnya antara 5 sampai 10 hari. Saat ini telah dikembangkan vaksin untuk Ebola yang 90% efektif dalam monyet, namun vaksin untuk manusia belum ditemukan. Sejauh ini, Ebola adalah penyakit yang paling mematikan di seluruh dunia. Kesempatan untuk hidup jika terinfeksi penyakit ini masih 0% alias tidak mungkin, dan sampai sekarang masih dicari vaksinnya. Penderita biasanya bisa langsung meninggal dalam siklus 6 hari sampai 20 hari, alias sangat cepat. Sekarang bisa dikatakan bahwa Ebola adalah penyakit yang paling dihindari untuk terjangkit di seluruh dunia."
+    },
+    {
+        "id_istilah": "20",
+        "nama_istilah": "Eklampsia",
+        "penjelasan": "Perkiraan jumlah asupan natrium yang diukur dari eksresi natrium dalam urin. Asupan garam maksimal 5-6 gram sehari dianjurkan untuk orang dewasa. Untuk jangka panjang tingkat asupan garam maksimum adalah 3 gram sehari."
+    },
+    {
+        "id_istilah": "21",
+        "nama_istilah": "Emerging diseases",
+        "penjelasan": "Penyakit-penyakit yang mencuat yaitu penyakit yang angka kejadiannya meningkat dalam dua dekade terakhir ini, atau mempunyai kecenderungan untuk meningkat dalam waktu dekat, penyakit yang area geografis penyebarannya meluas, dan penyakit yang tadinya mudah dikontrol dengan obat-obatan namun kini menjadi resisten."
+    },
+    {
+        "id_istilah": "22",
+        "nama_istilah": "Endemi (Endemic)",
+        "penjelasan": "Keberadaan penyakit atau agen infeksi secara terus menerus pada populasi tertentu atau wilayah tertentu. Juga dipakai untuk menyatakan insidens kasus baru penyakit yang selalu ada dalam keadaan mantap di suatu wilayah."
+    },
+    {
+        "id_istilah": "23",
+        "nama_istilah": "Farmakologi",
+        "penjelasan": "Ilmu yang mempelajari segala sesuatu tentang obat, terutama dampaknya pada tubuh."
+    },
+    {
+        "id_istilah": "24",
+        "nama_istilah": "Fertilisasi",
+        "penjelasan": "Sebuah proses pembuahan sel sperma atau sel telur, dimana keberhasilan proses pembuahan tersebut bergantung pada kondisi fisik sel sperma dan sel telur."
+    },
+    {
+        "id_istilah": "25",
+        "nama_istilah": "Filariasis",
+        "penjelasan": "Infeksi karena Filaria. Filaria merupakan nematoda (cacing gelang) berbentuk mirip benang yang dalam keadaan dewasa hidup dalam sistem peredaran darah atau sistem peredaran getah bening. Tempayak\/larvanya yang disebut mikrofilaria dapat ditularkan melalui gigitan nyamuk. Manifestasi yang sering dijumpai adalah manifestasi kronis berupa elefantiasis (kaki gajah) dan hidrokel (timbunan cairan setempat khususnya terjadi pada buah zakar). Terdapat tiga spesies cacing penyebab Filariasis yaitu Wuchereria bancrofti; Brugia malayi; Brugia timori. Semua spesies tersebut terdapat di Indonesia, namun lebih dari 70% kasus filariasis di Indonesia disebabkan oleh Brugia malayi."
+    },
+    {
+        "id_istilah": "26",
+        "nama_istilah": "Gastroenteritis",
+        "penjelasan": "Peradangan pada saluran pencernaan, yang melibatkan lambung, usus, atau keduanya, biasanya menyebabkan diare, kram perut, mual dan mungkin muntah. Gastroenteritis sering disebut flu perut atau flu lambung karena penyebab gastroenteritis paling umum adalah virus."
+    },
+    {
+        "id_istilah": "27",
+        "nama_istilah": "Kanker",
+        "penjelasan": "Kumpulan sel yang tidak dikelilingi kapsul; hal ini memungkinkan sel-sel tersebut dapat menyebar ke organ-organ tubuh lainnya di luar organ yang terkena. Kanker terbagi atas dua kelompok besar yaitu berbentuk cair, disebut kanker darah; berbentuk padat, terlihat sebagai benjolan yang dapat terjadi pada semua organ tubuh manusia seperti tulang, syaraf tepi, jaringan kelenjar getah bening, bola mata."
+    },
+    {
+        "id_istilah": "28",
+        "nama_istilah": "Karsinoma",
+        "penjelasan": "Pertumbuhan sel yang ganas yang terdiri dari sel-sel epitel yang cenderung untuk menginfiltrasi jaringan sekitarnya dan menimbulkan metastatis."
+    },
+    {
+        "id_istilah": "29",
+        "nama_istilah": "Malnutrisi",
+        "penjelasan": "Kelainan gizi, karena ketidakseimbangan atau ketidakcukupan diet atau akibat gangguan penyerapan atau pendayagunaan makanan."
+    },
+    {
+        "id_istilah": "30",
+        "nama_istilah": "Masa inkubasi",
+        "penjelasan": "Waktu antara masuknya suatu bibit penyakit ke dalam tubuh sampai timbulnya gejala-gejala penyakit"
+    },
+    {
+        "id_istilah": "31",
+        "nama_istilah": "NAPZA (Narkotika, Alkohol, Psikotropika dan Zat Adiktif lainnya)",
+        "penjelasan": "Narkotika yaitu zat-zat alamiah maupun sintetik dari bahan yang dapat menimbulkan candu yang mempunyai efek menurunkan atau mengubah kesadaran. Alkohol merupakan zat aktif dalam berbagai minuman keras. Di dalam alkohol terkandung etanol yang berfungsi menekan syaraf pusat. Kemudian psikotropika yaitu zat atau obat, baik alamiah maupun sintetis bukan narkotika, yang berkhasiat psikoaktif, yaitu perubahan khas pada aktivitas mental dan perilaku. Sedangkan zat-zat adiktif adalah zat-zat yang mengakibatkan ketergantungan. Zat-zat ini berbahaya karena bisa mematikan sel otak."
+    },
+    {
+        "id_istilah": "32",
+        "nama_istilah": "Narkotika",
+        "penjelasan": "Zat atau obat yang berasal dari tanaman atau bukan tanaman baik sintetis maupun semi sintetis yang dapat menyebabkan penurunan atau perubahan kesadaran, hilangnya rasa, mengurangi sampai menghilangkan rasa nyeri, dan dapat menimbulkan ketergantungan. Saat ini terdapat 116 jenis narkotika yang berada di bawah konvensi tahun 1961 (Single Convention on Narcotic Drugs)"
+    },
+    {
+        "id_istilah": "33",
+        "nama_istilah": "Neuroblastoma",
+        "penjelasan": "Tumor embrional dari sistem saraf simpatis yang berasal dari cikal bakal jaringan saraf (primitif neural crest)."
+    },
+    {
+        "id_istilah": "34",
+        "nama_istilah": "Nikotin",
+        "penjelasan": "Senyawa aktif farmakologis pyrrolidine yang terdapat dalam tembakau (Nicotiana tabacum, Nicotiana rustic) yang bersifat toksik dan sangat adiktif. Seorang perokok sangat sulit menghentikan kebiasaan merokoknya. Sifat adiksi nikotin sama dengan heroin atau obat adiktif lainnya."
+    },
+    {
+        "id_istilah": "35",
+        "nama_istilah": "Obesitas",
+        "penjelasan": "Suatukondisi medisberupa kelebihanlemak tubuhyang terakumulasi sedemikian rupa sehingga menimbulkan dampak merugikan bagi kesehatan, yang kemudian menurunkanharapan hidupdan\/atau meningkatkan masalah kesehatan.Seseorang dianggap menderita kegemukan (obese) bilaindeks massa tubuh(IMT), yaitu ukuran yang diperoleh dari hasil pembagian berat badan dalamkilogramdengan kuadrat tinggi badan dalammeter, lebih dari 30kg\/m2."
+    },
+    {
+        "id_istilah": "36",
+        "nama_istilah": "OD (Over Dosis)",
+        "penjelasan": "Gejala terjadinya keracunan akibat obat yang melebihi dosis yang bisa di terima oleh tubuh. OD sering disangkutan dengan terjadinya bila heroin digunakan bersama alkohol, obat tidur misalnya golongan barbiturat (luminal) atau penenang (valium, xanax, mogadon\/BK dan lain-lain). Jangan mengkonsumsi heroin bersama alkohol atau obat tersebut."
+    },
+    {
+        "id_istilah": "37",
+        "nama_istilah": "Pandemi (Pandemic)",
+        "penjelasan": "Wabah yang meliputi wilayah yang sangat luas."
+    },
+    {
+        "id_istilah": "38",
+        "nama_istilah": "Prebiotik",
+        "penjelasan": "Substansi makanan yang meningkatkan pertumbuhan beberapa bakteri usus yang menguntungkan bagi kesehatan. Sumber alami prebiotik dapat berasal dari produk susu yang mengandung FOS (Frukto Oligosakarida) dan GOS (Galakto Oligosakarida). Prebiotik yang berasal dari serat karbohidrat oligosakarida terdapat dalam buah-buahan, kacang polong-polongan, biji utuh sereal misalnya gandum, sayur-sayuran seperti asparagus, brokoli, dan bumbu-bumbu masak. Prebiotik menyebabkan keseimbangan flora usus dimana bakteri flora normal akan menekan berbagai bakteri patogen pada saluran pencernaan."
+    },
+    {
+        "id_istilah": "39",
+        "nama_istilah": "Preskripsi diet",
+        "penjelasan": "Kebutuhan zat gizi klien \/ pasien yang dihitung berdasarkan status gizi dan kondisi kesehatannya. Preskipsi diet dibuat oleh nutrisionis\/dietisien. (Sumber : Pedoman Pelayanan Gizi Rumah Sakit Departemen Kesehatan RI 2003)"
+    },
+    {
+        "id_istilah": "40",
+        "nama_istilah": "Rabies (penyakit anjing gila\/Lyssa)",
+        "penjelasan": "Penyakit infeksi akut yang menular, menyerang susunan saraf pusat yang disebabkan oleh virus rabies, dan ditularkan melalui gigitan hewan penular Rabies terutama anjing, kucing dan kera, mengakibatkan 100% kematian."
+    },
+    {
+        "id_istilah": "41",
+        "nama_istilah": "Miopia",
+        "penjelasan": "Kesalahan refraksi mata di mana bola mata terlalu mencembung dan fokus cahaya berada di depan retina mata. Hal ini menyebabkan kesulitan untuk memfokuskan obyek yang jauh dari mata. Juga disebut miopia."
+    },
+    {
+        "id_istilah": "42",
+        "nama_istilah": "Refleksologi",
+        "penjelasan": "Teknik penyembuhan alternatif untuk mengurangi ketegangan, meningkatkan sirkulasi, dan mempromosikan fungsi alami dari tubuh melalui penerapan tekanan pada berbagai titik-titik tertentu di kaki."
+    },
+    {
+        "id_istilah": "43",
+        "nama_istilah": "Rehabilitasi medik",
+        "penjelasan": "Meningkatkan kemampuan fungsional seseorang sesuai dengan potensi yang dimiliki untuk mempertahankan dan atau meningkatkan kualitas hidup dengan cara mencegah atau mengurangi impairment, disabilitas, dan handicapt semaksimal mungkin"
+    },
+    {
+        "id_istilah": "44",
+        "nama_istilah": "Remaja",
+        "penjelasan": "Kelompok usia 10-19 tahun"
+    },
+    {
+        "id_istilah": "45",
+        "nama_istilah": "Rubella",
+        "penjelasan": "Infeksi Rubella ditandai dengan demam akut, ruam pada kulit dan pembesaran kelenjar getah bening. Infeksi ini disebabkan oleh virus Rubella, dapat menyerang anak-anak dan dewasa muda. Infeksi Rubella berbahaya bila tejadi pada wanita hamil muda, karena dapat menyebabkan kelainan pada bayinya. Jika infeksi terjadi pada bulan pertama kehamilan maka risiko terjadinya kelainan adalah 50%, sedangkan jika infeksi tejadi trimester pertama maka risikonya menjadi 25% (menurut America College of Obstatrician and Gynecologists, 1981)."
+    },
+    {
+        "id_istilah": "46",
+        "nama_istilah": "Serum",
+        "penjelasan": "Di dalamdarah,serumadalah komponen yang bukan berupasel darah, juga bukanfaktor koagulasi; serum adalahplasma darahtanpafibrinogen. Serum terdiri dari semuaprotein(yang tidak digunakan untuk pembekuan darah) termasukcairan elektrolit,antibodi,antigen,hormon, dan semua substansiexogenous. Rumusan umum yaitu: serum = plasma - fibrinogen -proteinfaktor koagulasi."
+    },
+    {
+        "id_istilah": "47",
+        "nama_istilah": "Sianosis",
+        "penjelasan": "Warna kulit dan membran mukosa kebiruan atau pucat karena kandungan oksigen yang rendah dalam darah. Kondisi ini terutama mencolok di bibir dan kuku. Sianosis dapat muncul dalam berbagai kondisi medis di mana konsentrasi oksigen darah rendah, misalnya pada penyakit paru-paru, kelainan jantung dan di daerah geografis yang tinggi."
+    },
+    {
+        "id_istilah": "48",
+        "nama_istilah": "Silinder Mata = Astigmatisma",
+        "penjelasan": "Gejala penyimpangan dalam pembentukkan bayangan pada lensa, hal ini disebabkan oleh cacat lensa yang tidak dapat memberikan gambaran\/bayangan garis vertikal dengan horizontal secara bersamaan."
+    },
+    {
+        "id_istilah": "49",
+        "nama_istilah": "Simplisia",
+        "penjelasan": "Simplisia merupakan bahan baku alamiah yang dipergunakan sebagai obat tradisional yang belum mengalami pengolahan. Bagian tanaman yang biasa dijadikan sebagai simplisia yaitu daun, rimpang, bunga, biji dan kulit kayu. Terdapat 2 jenis simplisia yang dapat digunakan dalam pembuatan jamu yaitu simplisia basah atau simplisia kering. Jika simplisia yang digunakan memiliki kondisi yang kurang baik maka zat aktif yang terkandung dalam bahan baku jamu dapat berkurang atau bahkan tidak ada sama sekali, sehingga diperlukan proses pemilihan simplisia yang baik dan benar."
+    },
+    {
+        "id_istilah": "50",
+        "nama_istilah": "Toksoid",
+        "penjelasan": "Toksin yang diolah sedemikian rupa hingga hilang daya racunnya tapi masih mempunyai daya antigennya."
+    }
+]

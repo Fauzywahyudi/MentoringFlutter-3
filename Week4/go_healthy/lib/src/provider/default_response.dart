@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:go_healthy/src/model/informasi.dart';
+import 'package:go_healthy/src/model/istilah.dart';
 import 'package:go_healthy/src/model/transaksi.dart';
 import 'package:go_healthy/src/model/user.dart';
 import 'package:go_healthy/src/provider/shared_preference.dart';
@@ -78,6 +79,23 @@ class MyResponse {
     if (response.statusCode == 200) {
       final result = informasiFromJson(response.body);
       return result;
+    } else {
+      toast.failed(_failConnect);
+      return null;
+    }
+  }
+
+  Future<List<Istilah>> listIstilahResponse(Response response) async {
+    if (response.statusCode == 200) {
+      final result = jsonDecode(response.body);
+      int value = result[_value];
+      if (value == 1) {
+        final list = istilahFromJson(jsonEncode(result[_data]));
+        return list;
+      } else {
+        toast.failed(result[_message]);
+        return null;
+      }
     } else {
       toast.failed(_failConnect);
       return null;

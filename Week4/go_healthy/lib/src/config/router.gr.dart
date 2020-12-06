@@ -18,6 +18,7 @@ import 'package:go_healthy/src/model/informasi.dart';
 import 'package:go_healthy/src/pages/detail_transaksi.dart';
 import 'package:go_healthy/src/pages/bmi/home.dart';
 import 'package:go_healthy/src/pages/bmi/result.dart';
+import 'package:go_healthy/src/pages/istilah/istilah.dart';
 
 class Router {
   static const initialPage = '/';
@@ -30,6 +31,7 @@ class Router {
   static const detailTransaksi = '/detail-transaksi';
   static const homePageBMI = '/home-page-bm-i';
   static const resultBMI = '/result-bm-i';
+  static const istilahKesehatan = '/istilah-kesehatan';
   static GlobalKey<NavigatorState> get navigatorKey =>
       getNavigatorKey<Router>();
   static NavigatorState get navigator => navigatorKey.currentState;
@@ -99,6 +101,11 @@ class Router {
         return MaterialPageRoute(
           builder: (_) => ResultBMI(
               isMale: typedArgs.isMale, bb: typedArgs.bb, tb: typedArgs.tb),
+          settings: settings,
+        );
+      case Router.istilahKesehatan:
+        return MaterialPageRoute(
+          builder: (_) => IstilahKesehatan(),
           settings: settings,
         );
       default:

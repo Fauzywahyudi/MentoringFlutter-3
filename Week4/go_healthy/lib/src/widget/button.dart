@@ -43,8 +43,8 @@ class BackIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      top: 10,
-      left: 10,
+      top: 20,
+      left: 0,
       child: SafeArea(
         child: FloatingActionButton(
           backgroundColor: Colors.white,

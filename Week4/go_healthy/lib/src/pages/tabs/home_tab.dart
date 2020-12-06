@@ -17,94 +17,99 @@ class _HomeTabState extends State<HomeTab> {
         width: size.width,
         height: size.height,
         color: Colors.grey[200],
-        child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          child: Column(
-            children: [
-              BackGround(
-                title: 'Home',
-              ),
-              Container(
-                margin: EdgeInsets.all(10),
-                width: size.width,
-                child: Row(
+        child: Column(
+          children: [
+            BackGround(
+              title: 'Home',
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 10),
+              width: size.width,
+              height: size.height - 270,
+              child: SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
+                child: Column(
                   children: [
-                    Expanded(
-                      child: InkWell(
-                        onTap: () =>
-                            Router.navigator.pushNamed(Router.homePageBMI),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: borRad30,
-                          ),
-                          margin: EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              Container(
-                                height: 150,
-                                decoration: circleContainer.copyWith(
-                                  color: Colors.white,
-                                  image: DecorationImage(
-                                    image: AssetImage(
-                                        'assets/images/icon_bmi.png'),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(height: 20),
-                              Container(
-                                padding: EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                    borderRadius: borRad30,
-                                    color: Colors.red[100]),
-                                child: Text(
-                                  'Kalkulator BMI',
-                                  style: textMenu.copyWith(color: Colors.red),
-                                ),
-                              )
-                            ],
-                          ),
+                    Row(
+                      children: [
+                        MenuHome(
+                          title: 'Kalkulator \nBMI',
+                          image: 'icon_bmi.png',
+                          onTap: () =>
+                              Router.navigator.pushNamed(Router.homePageBMI),
                         ),
-                      ),
-                    ),
-                    Expanded(
-                      child: InkWell(
-                        onTap: () {},
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: borRad30,
-                          ),
-                          margin: EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              Container(
-                                height: 150,
-                                decoration: circleContainer.copyWith(
-                                  color: Colors.white,
-                                  image: DecorationImage(
-                                    image: AssetImage(
-                                        'assets/images/icon_kesehatan.png'),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(height: 20),
-                              Container(
-                                padding: EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                    borderRadius: borRad30,
-                                    color: Colors.red[100]),
-                                child: Text(
-                                  'Istilah',
-                                  style: textMenu.copyWith(color: Colors.red),
-                                ),
-                              )
-                            ],
-                          ),
+                        MenuHome(
+                          title: 'Istilah \Kesehatan',
+                          image: 'icon_kesehatan.png',
+                          onTap: () => Router.navigator
+                              .pushNamed(Router.istilahKesehatan),
                         ),
-                      ),
+                      ],
                     ),
                   ],
                 ),
               ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class MenuHome extends StatelessWidget {
+  final VoidCallback onTap;
+  final String title;
+  final String image;
+  const MenuHome({
+    @required this.onTap,
+    @required this.title,
+    @required this.image,
+  });
+  static const uri = 'assets/images/';
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: InkWell(
+        onTap: onTap,
+        child: Container(
+          padding: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: borRad30,
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 5,
+                  offset: Offset(1, 1),
+                  color: Colors.red,
+                ),
+              ]),
+          margin: EdgeInsets.all(10),
+          child: Column(
+            children: [
+              Container(
+                height: 80,
+                width: 80,
+                decoration: circleContainer.copyWith(
+                  color: Colors.white,
+                  image: DecorationImage(
+                    image: AssetImage(uri + image),
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+              Container(
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  borderRadius: borRad30,
+                ),
+                child: Text(
+                  title,
+                  textAlign: TextAlign.center,
+                  style: textMenu.copyWith(color: Colors.red),
+                ),
+              )
             ],
           ),
         ),

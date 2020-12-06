@@ -2,103 +2,25 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:go_healthy/src/config/api.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_healthy/src/model/istilah.dart';
+import 'package:go_healthy/src/provider/istilah_provider.dart';
+import 'package:go_healthy/src/theme/decoration.dart';
+import 'package:go_healthy/src/widget/background.dart';
+import 'package:go_healthy/src/widget/button.dart';
+import 'package:go_healthy/src/widget/text.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class IstilahPage extends StatefulWidget {
-  static const routeName = '/istilah';
+class IstilahKesehatan extends StatefulWidget {
   @override
-  _IstilahPageState createState() => _IstilahPageState();
+  _IstilahKesehatanState createState() => _IstilahKesehatanState();
 }
 
-class _IstilahPageState extends State<IstilahPage> {
-  String _keyword = '';
-  var _tecSearch = TextEditingController();
-  bool _isSearch = false;
-  Widget get _action => _isSearch
-      ? IconButton(
-          icon: Icon(Icons.close),
-          onPressed: () => onClickAction(),
-        )
-      : IconButton(
-          icon: Icon(Icons.search),
-          onPressed: () => onClickAction(),
-        );
-
-  void onClickAction() {
-    setState(() {
-      _isSearch = !_isSearch;
-      _keyword = '';
-      _tecSearch.text = '';
-    });
-  }
-
-  Widget get _title => _isSearch
-      ? TextField(
-          controller: _tecSearch,
-          autofocus: _isSearch,
-          style: TextStyle(color: Colors.white),
-          decoration:
-              InputDecoration(border: InputBorder.none, hintText: 'Search...'),
-          onChanged: (v) {
-            setState(() {
-              _keyword = v;
-            });
-          },
-        )
-      : Text('Istilah Kesehatan');
-
-  @override
-  Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    return Scaffold(
-      appBar: AppBar(
-        title: _title,
-        actions: [_action],
-      ),
-      body: Container(
-          height: size.height,
-          width: size.width,
-          child: FutureBuilder<List>(
-            future: _getIstilah(_keyword),
-            builder: (context, snapshot) {
-              var state = snapshot.connectionState;
-              if (state != ConnectionState.done) {
-                return Center(child: CircularProgressIndicator());
-              } else if (snapshot.hasData) {
-                return RefreshIndicator(
-                  onRefresh: handleRefresh,
-                  child: snapshot.data.isEmpty
-                      ? _noData()
-                      : ListView.builder(
-                          itemCount: snapshot.data.length,
-                          itemBuilder: (context, index) {
-                            return _buildItem(context, snapshot.data[index]);
-                          },
-                        ),
-                );
-              } else if (snapshot.hasError) {
-                return Center(child: Text(snapshot.error.toString()));
-              } else {
-                return Text('');
-              }
-            },
-          )),
-    );
-  }
-
-  Future<List> _getIstilah(String keyword) async {
-    final result = await http.post(Api.getIstilah, body: {
-      'keyword': keyword,
-    });
-    if (result.statusCode == 200) {
-      final response = jsonDecode(result.body);
-      final data = response['data'];
-      return data;
-    } else {
-      return [];
-    }
-  }
+class _IstilahKesehatanState extends State<IstilahKesehatan> {
+  String _currentSearch = "";
+  final asset = "assets/images/";
+  var tecSearch = TextEditingController();
+  final istilahProv = IstilahProvider();
 
   Future<Null> handleRefresh() async {
     Completer<Null> completer = new Completer<Null>();
@@ -109,35 +31,151 @@ class _IstilahPageState extends State<IstilahPage> {
     return completer.future;
   }
 
-  Widget _noData() {
-    return Center(
-      child: Text('Data tidak ditemukan'),
+  @override
+  Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    return Scaffold(
+      body: Container(
+        width: size.width,
+        height: size.height,
+        color: Colors.grey[200],
+        child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Stack(
+            children: [
+              BackGround(
+                title: 'Istilah Kesehatan',
+              ),
+              BackIconButton(
+                onPressed: () => Navigator.pop(context),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 100),
+                width: size.width,
+                child: Stack(
+                  children: [
+                    _buildBody(),
+                    _buildSearchInput(),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
-  Widget _buildItem(BuildContext context, var list) {
-    return Card(
-      child: ExpansionTile(
-        title: Text(
-          list['nama_istilah'],
-          style: TextStyle(fontSize: 20),
-        ),
-        children: [
-          Container(
-            padding: EdgeInsets.all(10),
-            child: Row(
-              children: [
-                Expanded(
-                    child: Text(
-                  list['penjelasan'],
+  Widget _buildBody() {
+    return Container(
+      margin: EdgeInsets.only(top: 100),
+      height: MediaQuery.of(context).size.height - 220,
+      child: FutureBuilder<List<Istilah>>(
+        future: istilahProv.getIstilah(_currentSearch),
+        builder: (context, snapshot) {
+          var state = snapshot.connectionState;
+          if (state != ConnectionState.done) {
+            return Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasData) {
+            return snapshot.data.isEmpty
+                ? NoData(
+                    msg: 'Tidak Ada Data!',
+                  )
+                : _buildListBuilder(snapshot);
+          } else if (snapshot.hasError) {
+            return Center(child: Text(snapshot.error.toString()));
+          } else {
+            return Text('');
+          }
+        },
+      ),
+    );
+  }
+
+  Widget _buildListBuilder(AsyncSnapshot<List<Istilah>> snapshot) {
+    return RefreshIndicator(
+        onRefresh: handleRefresh,
+        child: ListView.builder(
+          itemCount: snapshot.data.length,
+          itemBuilder: (context, index) {
+            return _buildItemList(snapshot.data[index]);
+          },
+        ));
+  }
+
+  Widget _buildItemList(Istilah model) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+      child: Material(
+        borderRadius: BorderRadius.circular(20),
+        elevation: 2.0,
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 5),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                child: Text(
+                  model.namaIstilah,
+                  style: GoogleFonts.mcLaren(fontSize: 17, color: Colors.red),
+                ),
+              ),
+              Divider(
+                indent: 15,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                child: Text(
+                  model.penjelasan,
                   textAlign: TextAlign.justify,
-                  style: TextStyle(fontSize: 17),
-                ))
-              ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSearchInput() {
+    return Container(
+      child: Column(
+        children: [
+          SizedBox(height: 30),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Material(
+              elevation: 5.0,
+              borderRadius: BorderRadius.all(Radius.circular(30)),
+              child: TextField(
+                controller: tecSearch,
+                cursorColor: Theme.of(context).primaryColor,
+                style: TextStyle(fontSize: 18, color: Colors.black),
+                decoration: InputDecoration(
+                  hintText: "Search..",
+                  hintStyle: textLabel,
+                  prefixIcon: Material(
+                    elevation: 0.0,
+                    borderRadius: BorderRadius.all(Radius.circular(30)),
+                    child: Icon(Icons.search),
+                  ),
+                  border: InputBorder.none,
+                  contentPadding:
+                      EdgeInsets.symmetric(horizontal: 25, vertical: 13),
+                ),
+                onChanged: (value) {
+                  setState(() {
+                    _currentSearch = value;
+                  });
+                },
+              ),
             ),
           ),
         ],
       ),
     );
   }
+
+  Widget _buildLoading() => Center(child: CircularProgressIndicator());
 }
