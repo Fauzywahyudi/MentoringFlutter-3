@@ -1,3 +1,4 @@
+import 'package:go_healthy/src/pages/tabs/home_tab.dart';
 import 'package:go_healthy/src/pages/tabs/info_tabs.dart';
 import 'package:go_healthy/src/pages/tabs/profil_tab.dart';
 import 'package:go_healthy/src/pages/tabs/transaction_tab.dart';
@@ -16,7 +17,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    _widgetOptions.add(TransactionTab());
+    _widgetOptions.add(HomeTab());
+    // _widgetOptions.add(TransactionTab());
     _widgetOptions.add(InfoTab());
     _widgetOptions.add(ProfilTab());
     super.initState();
@@ -36,7 +38,7 @@ class _HomePageState extends State<HomePage> {
       padding: EdgeInsets.all(5),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.green,
+          color: Colors.red,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
@@ -50,7 +52,7 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
             child: GNav(
                 gap: 8,
-                activeColor: Colors.green,
+                activeColor: Colors.red,
                 iconSize: 24,
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                 duration: Duration(milliseconds: 500),

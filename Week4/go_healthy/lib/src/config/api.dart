@@ -1,5 +1,8 @@
 class Api {
-  static const main = 'http://10.0.2.2/MentoringFlutter-3/Week4/api_finance/';
+  static const main =
+      'http://10.0.2.2/MentoringFlutter-3/Week4/api_go_healthy/';
+  // static const main =
+  //     'http://192.168.43.31/MentoringFlutter-3/Week4/api_go_healthy/';
   static const images = main + 'images/';
   static const register = main + 'register.php';
   static const updateProfil = main + 'updateProfil.php';
@@ -8,4 +11,7 @@ class Api {
   static const addTransaksi = main + 'addTransaksi.php';
   static const deleteTransaksi = main + 'deleteTransaksi.php';
   static const getInformasi = main + 'getInformasi.json';
+
+  static const getBerita = main + 'getBerita.php';
+  static const getIstilah = main + 'getIstilah.php';
 }

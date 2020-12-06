@@ -16,6 +16,8 @@ import 'package:go_healthy/src/pages/onboarding.dart';
 import 'package:go_healthy/src/pages/detail_informasi.dart';
 import 'package:go_healthy/src/model/informasi.dart';
 import 'package:go_healthy/src/pages/detail_transaksi.dart';
+import 'package:go_healthy/src/pages/bmi/home.dart';
+import 'package:go_healthy/src/pages/bmi/result.dart';
 
 class Router {
   static const initialPage = '/';
@@ -26,6 +28,8 @@ class Router {
   static const onBoardingPage = '/on-boarding-page';
   static const detailInformasi = '/detail-informasi';
   static const detailTransaksi = '/detail-transaksi';
+  static const homePageBMI = '/home-page-bm-i';
+  static const resultBMI = '/result-bm-i';
   static GlobalKey<NavigatorState> get navigatorKey =>
       getNavigatorKey<Router>();
   static NavigatorState get navigator => navigatorKey.currentState;
@@ -82,6 +86,21 @@ class Router {
               DetailTransaksi(tipe: typedArgs.tipe, value: typedArgs.value),
           settings: settings,
         );
+      case Router.homePageBMI:
+        return MaterialPageRoute(
+          builder: (_) => HomePageBMI(),
+          settings: settings,
+        );
+      case Router.resultBMI:
+        if (hasInvalidArgs<ResultBMIArguments>(args, isRequired: true)) {
+          return misTypedArgsRoute<ResultBMIArguments>(args);
+        }
+        final typedArgs = args as ResultBMIArguments;
+        return MaterialPageRoute(
+          builder: (_) => ResultBMI(
+              isMale: typedArgs.isMale, bb: typedArgs.bb, tb: typedArgs.tb),
+          settings: settings,
+        );
       default:
         return unknownRoutePage(settings.name);
     }
@@ -97,4 +116,13 @@ class DetailTransaksiArguments {
   final String tipe;
   final String value;
   DetailTransaksiArguments({@required this.tipe, @required this.value});
+}
+
+//ResultBMI arguments holder class
+class ResultBMIArguments {
+  final bool isMale;
+  final double bb;
+  final double tb;
+  ResultBMIArguments(
+      {@required this.isMale, @required this.bb, @required this.tb});
 }

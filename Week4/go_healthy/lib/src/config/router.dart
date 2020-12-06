@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route_annotations.dart';
+import 'package:go_healthy/src/pages/bmi/home.dart';
+import 'package:go_healthy/src/pages/bmi/result.dart';
 import 'package:go_healthy/src/pages/detail_informasi.dart';
 import 'package:go_healthy/src/pages/detail_transaksi.dart';
 import 'package:go_healthy/src/pages/form_login.dart';
@@ -19,4 +21,6 @@ class $Router {
   OnBoardingPage onBoardingPage;
   DetailInformasi detailInformasi;
   DetailTransaksi detailTransaksi;
+  HomePageBMI homePageBMI;
+  ResultBMI resultBMI;
 }

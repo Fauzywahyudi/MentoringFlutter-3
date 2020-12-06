@@ -36,6 +36,7 @@ class MyResponse {
   }
 
   Future<User> userResponse(Response response) async {
+    print(response.statusCode);
     if (response.statusCode == 200) {
       final result = jsonDecode(response.body);
       int value = result[_value];

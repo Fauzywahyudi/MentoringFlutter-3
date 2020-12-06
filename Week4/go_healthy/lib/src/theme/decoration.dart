@@ -26,6 +26,7 @@ BoxDecoration circleIcon =
     BoxDecoration(shape: BoxShape.circle, color: Colors.green);
 BoxDecoration circleContainer =
     BoxDecoration(shape: BoxShape.circle, color: Colors.red);
+BorderRadiusGeometry borRad30 = BorderRadius.circular(30);
 
 TextStyle textMenu = TextStyle(fontWeight: FontWeight.bold, fontSize: 18);
 TextStyle textTitle = TextStyle(fontSize: 20, fontWeight: FontWeight.bold);
@@ -33,6 +34,6 @@ TextStyle textValue =
     TextStyle(fontSize: 30, color: Colors.green, fontWeight: FontWeight.bold);
 
 TextStyle textWhite = TextStyle(color: Colors.white);
-TextStyle textPrimary = TextStyle(color: Colors.green);
+TextStyle textPrimary = TextStyle(color: Colors.red);
 TextStyle textDanger = TextStyle(color: Colors.red);
 TextStyle textLabel = TextStyle(color: Colors.grey);

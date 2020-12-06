@@ -10,7 +10,7 @@ class BackGround extends StatelessWidget {
       height: 200,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-        color: Colors.green,
+        color: Colors.red,
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(40),
         ),
