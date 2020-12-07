@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:go_healthy/src/config/api.dart';
 import 'package:http/http.dart' as http;
-import 'package:go_healthy/src/pages/istilah/detail_berita.dart';
+// import 'package:go_healthy/src/pages/istilah/detail_berita.dart';
 
 class BeritaPage extends StatefulWidget {
   static const routeName = '/berita';

@@ -6,7 +6,7 @@ import 'package:go_healthy/src/pages/detail_informasi.dart';
 import 'package:go_healthy/src/pages/detail_transaksi.dart';
 import 'package:go_healthy/src/pages/form_login.dart';
 import 'package:go_healthy/src/pages/home.dart';
-import 'package:go_healthy/src/pages/istilah/detail_berita.dart';
+import 'package:go_healthy/src/pages/berita/detail_berita.dart';
 import 'package:go_healthy/src/pages/istilah/istilah.dart';
 import 'package:go_healthy/src/pages/login.dart';
 import 'package:go_healthy/src/pages/onboarding.dart';

@@ -4,7 +4,6 @@ import 'package:go_healthy/src/provider/shared_preference.dart';
 import 'package:go_healthy/src/provider/transaksi_provider.dart';
 import 'package:go_healthy/src/theme/decoration.dart';
 import 'package:go_healthy/src/widget/background.dart';
-import 'package:go_healthy/src/widget/dialog.dart';
 import 'package:go_healthy/src/widget/text.dart';
 import 'package:go_healthy/src/widget/widget.dart';
 import 'package:flutter/material.dart';

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_healthy/src/config/router.gr.dart';
-import 'package:go_healthy/src/pages/istilah/berita.dart';
 import 'package:go_healthy/src/provider/shared_preference.dart';
 import 'package:go_healthy/src/theme/decoration.dart';
 import 'package:go_healthy/src/widget/background.dart';

@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:go_healthy/src/model/istilah.dart';
 import 'package:go_healthy/src/provider/istilah_provider.dart';
@@ -175,6 +173,4 @@ class _IstilahKesehatanState extends State<IstilahKesehatan> {
       ),
     );
   }
-
-  Widget _buildLoading() => Center(child: CircularProgressIndicator());
 }

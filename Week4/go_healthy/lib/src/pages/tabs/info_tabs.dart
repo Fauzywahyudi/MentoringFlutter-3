@@ -1,8 +1,7 @@
 import 'dart:async';
-
 import 'package:go_healthy/src/config/api.dart';
 import 'package:go_healthy/src/config/router.gr.dart';
-import 'package:go_healthy/src/model/informasi.dart';
+import 'package:go_healthy/src/model/tips.dart';
 import 'package:go_healthy/src/provider/informasi_provider.dart';
 import 'package:go_healthy/src/theme/decoration.dart';
 import 'package:go_healthy/src/widget/background.dart';
@@ -27,7 +26,7 @@ class _InfoTabState extends State<InfoTab> with TickerProviderStateMixin {
       color: Colors.grey[100],
       child: Stack(children: [
         BackGround(
-          title: 'Info And Tips',
+          title: 'Info And Tips Sehat',
         ),
         Container(
           margin: EdgeInsets.only(top: 100),
@@ -41,8 +40,8 @@ class _InfoTabState extends State<InfoTab> with TickerProviderStateMixin {
                   width: size.width,
                   height: size.height - (70 + kToolbarHeight * 2),
                   child: Card(
-                    child: FutureBuilder<List<Informasi>>(
-                      future: informProv.getInformasi(),
+                    child: FutureBuilder<List<Tips>>(
+                      future: informProv.getTips(),
                       builder: (context, snapshot) {
                         var state = snapshot.connectionState;
                         if (state != ConnectionState.done) {
@@ -70,7 +69,7 @@ class _InfoTabState extends State<InfoTab> with TickerProviderStateMixin {
     ));
   }
 
-  Widget _buildListBuilder(AsyncSnapshot<List<Informasi>> snapshot) {
+  Widget _buildListBuilder(AsyncSnapshot<List<Tips>> snapshot) {
     return RefreshIndicator(
       onRefresh: handleRefresh,
       child: ListView.builder(
@@ -82,7 +81,7 @@ class _InfoTabState extends State<InfoTab> with TickerProviderStateMixin {
     );
   }
 
-  Widget _itemListTransaksi(Informasi model) {
+  Widget _itemListTransaksi(Tips model) {
     return InkWell(
       onTap: () =>
           Router.navigator.pushNamed(Router.detailInformasi, arguments: model),
@@ -93,20 +92,17 @@ class _InfoTabState extends State<InfoTab> with TickerProviderStateMixin {
             Container(
               width: MediaQuery.of(context).size.width - 40,
               color: Colors.green,
-              height: 100,
+              height: 150,
               margin: EdgeInsets.all(10),
-              child: Hero(
-                tag: model.idInformasi.toString(),
-                child: Image.network(
-                  Api.images + model.image,
-                  fit: BoxFit.fitWidth,
-                ),
+              child: Image.network(
+                Api.imgTips + model.image,
+                fit: BoxFit.fitWidth,
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Text(
-                model.judul,
+                model.judulTips,
                 textAlign: TextAlign.justify,
                 style: textMenu,
               ),

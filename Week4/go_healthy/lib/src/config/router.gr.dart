@@ -14,13 +14,13 @@ import 'package:go_healthy/src/pages/home.dart';
 import 'package:go_healthy/src/pages/form_login.dart';
 import 'package:go_healthy/src/pages/onboarding.dart';
 import 'package:go_healthy/src/pages/detail_informasi.dart';
-import 'package:go_healthy/src/model/informasi.dart';
+import 'package:go_healthy/src/model/tips.dart';
 import 'package:go_healthy/src/pages/detail_transaksi.dart';
 import 'package:go_healthy/src/pages/bmi/home.dart';
 import 'package:go_healthy/src/pages/bmi/result.dart';
 import 'package:go_healthy/src/pages/istilah/istilah.dart';
 import 'package:go_healthy/src/pages/berita/berita_kesehatan.dart';
-import 'package:go_healthy/src/pages/istilah/detail_berita.dart';
+import 'package:go_healthy/src/pages/berita/detail_berita.dart';
 import 'package:go_healthy/src/model/berita.dart';
 
 class Router {
@@ -75,10 +75,10 @@ class Router {
           settings: settings,
         );
       case Router.detailInformasi:
-        if (hasInvalidArgs<Informasi>(args, isRequired: true)) {
-          return misTypedArgsRoute<Informasi>(args);
+        if (hasInvalidArgs<Tips>(args, isRequired: true)) {
+          return misTypedArgsRoute<Tips>(args);
         }
-        final typedArgs = args as Informasi;
+        final typedArgs = args as Tips;
         return MaterialPageRoute(
           builder: (_) => DetailInformasi(model: typedArgs),
           settings: settings,

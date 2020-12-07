@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 class BackGround extends StatelessWidget {
   final String title;
   final String subTitle;
+  final double height;
 
-  const BackGround({@required this.title, this.subTitle = ''});
+  const BackGround(
+      {@required this.title, this.subTitle = '', this.height = 200});
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
+      height: height,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         color: Colors.red,

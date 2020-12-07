@@ -1,45 +1,41 @@
 import 'dart:convert';
 
-List<Informasi> informasiFromJson(String str) =>
-    List<Informasi>.from(json.decode(str).map((x) => Informasi.fromJson(x)));
+List<Tips> tipsFromJson(String str) =>
+    List<Tips>.from(json.decode(str).map((x) => Tips.fromJson(x)));
 
-String informasiToJson(List<Informasi> data) =>
+String tipsToJson(List<Tips> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class Informasi {
-  Informasi({
-    this.idInformasi,
+class Tips {
+  Tips({
     this.idTips,
-    this.judulInformasi,
-    this.isi,
+    this.judulTips,
+    this.sumber,
     this.image,
     this.createAt,
     this.updateAt,
   });
 
-  String idInformasi;
   String idTips;
-  String judulInformasi;
-  String isi;
+  String judulTips;
+  String sumber;
   String image;
   DateTime createAt;
   DateTime updateAt;
 
-  factory Informasi.fromJson(Map<String, dynamic> json) => Informasi(
-        idInformasi: json["id_informasi"],
+  factory Tips.fromJson(Map<String, dynamic> json) => Tips(
         idTips: json["id_tips"],
-        judulInformasi: json["judul_informasi"],
-        isi: json["isi"],
+        judulTips: json["judul_tips"],
+        sumber: json["sumber"],
         image: json["image"],
         createAt: DateTime.parse(json["create_at"]),
         updateAt: DateTime.parse(json["update_at"]),
       );
 
   Map<String, dynamic> toJson() => {
-        "id_informasi": idInformasi,
         "id_tips": idTips,
-        "judul_informasi": judulInformasi,
-        "isi": isi,
+        "judul_tips": judulTips,
+        "sumber": sumber,
         "image": image,
         "create_at": createAt.toIso8601String(),
         "update_at": updateAt.toIso8601String(),

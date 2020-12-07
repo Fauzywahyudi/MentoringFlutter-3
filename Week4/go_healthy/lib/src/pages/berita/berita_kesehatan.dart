@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:go_healthy/src/config/api.dart';
 import 'package:go_healthy/src/config/router.gr.dart';
 import 'package:go_healthy/src/model/berita.dart';
-import 'package:go_healthy/src/pages/istilah/detail_berita.dart';
 import 'package:go_healthy/src/provider/berita_provider.dart';
 import 'package:go_healthy/src/widget/background.dart';
 import 'package:go_healthy/src/widget/button.dart';
@@ -42,12 +41,13 @@ class _BeritaKesehatanState extends State<BeritaKesehatan> {
             children: [
               BackGround(
                 title: 'Berita Kesehatan',
+                height: 150,
               ),
               BackIconButton(
                 onPressed: () => Navigator.pop(context),
               ),
               Container(
-                  margin: EdgeInsets.only(top: 200),
+                  margin: EdgeInsets.only(top: 150),
                   width: size.width,
                   height: MediaQuery.of(context).size.height - 220,
                   child: FutureBuilder<List<Berita>>(
