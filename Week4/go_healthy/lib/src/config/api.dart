@@ -1,8 +1,12 @@
 class Api {
+  // debug to emulator
   static const main =
       'http://10.0.2.2/MentoringFlutter-3/Week4/api_go_healthy/';
+
+  // debug to real device
   // static const main =
   //     'http://192.168.43.31/MentoringFlutter-3/Week4/api_go_healthy/';
+
   static const images = main + 'images/';
   static const imgTips = main + 'images/tips/';
   static const register = main + 'register.php';

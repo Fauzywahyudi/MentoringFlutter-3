@@ -15,7 +15,6 @@ import 'package:go_healthy/src/pages/form_login.dart';
 import 'package:go_healthy/src/pages/onboarding.dart';
 import 'package:go_healthy/src/pages/detail_informasi.dart';
 import 'package:go_healthy/src/model/tips.dart';
-import 'package:go_healthy/src/pages/detail_transaksi.dart';
 import 'package:go_healthy/src/pages/bmi/home.dart';
 import 'package:go_healthy/src/pages/bmi/result.dart';
 import 'package:go_healthy/src/pages/istilah/istilah.dart';
@@ -31,7 +30,6 @@ class Router {
   static const formLogin = '/form-login';
   static const onBoardingPage = '/on-boarding-page';
   static const detailInformasi = '/detail-informasi';
-  static const detailTransaksi = '/detail-transaksi';
   static const homePageBMI = '/home-page-bm-i';
   static const resultBMI = '/result-bm-i';
   static const istilahKesehatan = '/istilah-kesehatan';
@@ -83,16 +81,6 @@ class Router {
           builder: (_) => DetailInformasi(model: typedArgs),
           settings: settings,
         );
-      case Router.detailTransaksi:
-        if (hasInvalidArgs<DetailTransaksiArguments>(args, isRequired: true)) {
-          return misTypedArgsRoute<DetailTransaksiArguments>(args);
-        }
-        final typedArgs = args as DetailTransaksiArguments;
-        return MaterialPageRoute(
-          builder: (_) =>
-              DetailTransaksi(tipe: typedArgs.tipe, value: typedArgs.value),
-          settings: settings,
-        );
       case Router.homePageBMI:
         return MaterialPageRoute(
           builder: (_) => HomePageBMI(),
@@ -136,13 +124,6 @@ class Router {
 //**************************************************************************
 // Arguments holder classes
 //***************************************************************************
-
-//DetailTransaksi arguments holder class
-class DetailTransaksiArguments {
-  final String tipe;
-  final String value;
-  DetailTransaksiArguments({@required this.tipe, @required this.value});
-}
 
 //ResultBMI arguments holder class
 class ResultBMIArguments {

@@ -3,7 +3,6 @@ import 'package:go_healthy/src/pages/berita/berita_kesehatan.dart';
 import 'package:go_healthy/src/pages/bmi/home.dart';
 import 'package:go_healthy/src/pages/bmi/result.dart';
 import 'package:go_healthy/src/pages/detail_informasi.dart';
-import 'package:go_healthy/src/pages/detail_transaksi.dart';
 import 'package:go_healthy/src/pages/form_login.dart';
 import 'package:go_healthy/src/pages/home.dart';
 import 'package:go_healthy/src/pages/berita/detail_berita.dart';
@@ -23,7 +22,6 @@ class $Router {
   FormLogin formLogin;
   OnBoardingPage onBoardingPage;
   DetailInformasi detailInformasi;
-  DetailTransaksi detailTransaksi;
   HomePageBMI homePageBMI;
   ResultBMI resultBMI;
   IstilahKesehatan istilahKesehatan;

@@ -4,7 +4,6 @@ import 'package:go_healthy/src/model/berita.dart';
 import 'package:go_healthy/src/model/informasi.dart';
 import 'package:go_healthy/src/model/istilah.dart';
 import 'package:go_healthy/src/model/tips.dart';
-import 'package:go_healthy/src/model/transaksi.dart';
 import 'package:go_healthy/src/model/user.dart';
 import 'package:go_healthy/src/provider/shared_preference.dart';
 import 'package:go_healthy/src/widget/toast.dart';
@@ -51,23 +50,6 @@ class MyResponse {
       } else if (value == 2) {
         toast.failed(result[_message]);
         return null;
-      } else {
-        toast.failed(result[_message]);
-        return null;
-      }
-    } else {
-      toast.failed(_failConnect);
-      return null;
-    }
-  }
-
-  Future<List<Transaksi>> listTransaksiResponse(Response response) async {
-    if (response.statusCode == 200) {
-      final result = jsonDecode(response.body);
-      int value = result[_value];
-      if (value == 1) {
-        final list = transaksiFromJson(jsonEncode(result[_data]));
-        return list;
       } else {
         toast.failed(result[_message]);
         return null;
