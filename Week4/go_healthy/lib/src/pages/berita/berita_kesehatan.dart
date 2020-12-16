@@ -47,28 +47,29 @@ class _BeritaKesehatanState extends State<BeritaKesehatan> {
                 onPressed: () => Navigator.pop(context),
               ),
               Container(
-                  margin: EdgeInsets.only(top: 150),
-                  width: size.width,
-                  height: MediaQuery.of(context).size.height - 220,
-                  child: FutureBuilder<List<Berita>>(
-                    future: beritaProv.getBerita(),
-                    builder: (context, snapshot) {
-                      var state = snapshot.connectionState;
-                      if (state != ConnectionState.done) {
-                        return Center(child: CircularProgressIndicator());
-                      } else if (snapshot.hasData) {
-                        return snapshot.data.isEmpty
-                            ? NoData(
-                                msg: 'Tidak Ada Data!',
-                              )
-                            : _buildListBuilder(snapshot);
-                      } else if (snapshot.hasError) {
-                        return Center(child: Text(snapshot.error.toString()));
-                      } else {
-                        return Text('');
-                      }
-                    },
-                  )),
+                margin: EdgeInsets.only(top: 150),
+                width: size.width,
+                height: MediaQuery.of(context).size.height - 150,
+                child: FutureBuilder<List<Berita>>(
+                  future: beritaProv.getBerita(),
+                  builder: (context, snapshot) {
+                    var state = snapshot.connectionState;
+                    if (state != ConnectionState.done) {
+                      return Center(child: CircularProgressIndicator());
+                    } else if (snapshot.hasData) {
+                      return snapshot.data.isEmpty
+                          ? NoData(
+                              msg: 'Tidak Ada Data!',
+                            )
+                          : _buildListBuilder(snapshot);
+                    } else if (snapshot.hasError) {
+                      return Center(child: Text(snapshot.error.toString()));
+                    } else {
+                      return Text('');
+                    }
+                  },
+                ),
+              ),
             ],
           ),
         ),
@@ -78,13 +79,15 @@ class _BeritaKesehatanState extends State<BeritaKesehatan> {
 
   Widget _buildListBuilder(AsyncSnapshot<List<Berita>> snapshot) {
     return RefreshIndicator(
-        onRefresh: handleRefresh,
-        child: ListView.builder(
-          itemCount: snapshot.data.length,
-          itemBuilder: (context, index) {
-            return _buildItemList(snapshot.data[index]);
-          },
-        ));
+      onRefresh: handleRefresh,
+      child: ListView.builder(
+        padding: EdgeInsets.only(top: 0),
+        itemCount: snapshot.data.length,
+        itemBuilder: (context, index) {
+          return _buildItemList(snapshot.data[index]);
+        },
+      ),
+    );
   }
 
   Widget _buildItemList(Berita model) {

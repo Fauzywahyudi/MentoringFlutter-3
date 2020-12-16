@@ -98,8 +98,9 @@ class _RegisterPageState extends State<RegisterPage> with RegisterValidation {
                         focusNode: _focPassword,
                         obscureText: _obscurePass,
                         decoration: inputDecoration('Password').copyWith(
-                            suffixIcon: IconButton(
-                                icon: Icon(_iconPass), onPressed: setObscure)),
+                          suffixIcon: IconButton(
+                              icon: Icon(_iconPass), onPressed: setObscure),
+                        ),
                         validator: validatePassword,
                         onSaved: (value) {
                           _password = value;
@@ -134,7 +135,8 @@ class _RegisterPageState extends State<RegisterPage> with RegisterValidation {
       formKey.currentState.save();
       UserProvider provider = UserProvider();
       final response = await provider.onRegister(
-          User(email: _email, namaLengkap: _name, password: _password));
+        User(email: _email, namaLengkap: _name, password: _password),
+      );
       if (response) {
         Navigator.pop(context);
         Router.navigator.pushNamed(Router.formLogin);

@@ -20,53 +20,55 @@ class _InfoTabState extends State<InfoTab> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-        body: Container(
-      width: size.width,
-      height: size.height,
-      color: Colors.grey[100],
-      child: Stack(children: [
-        BackGround(
-          title: 'Info And Tips Sehat',
-        ),
-        Container(
-          margin: EdgeInsets.only(top: 100),
-          width: size.width,
-          height: size.height,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 20),
-                  width: size.width,
-                  height: size.height - (70 + kToolbarHeight * 2),
-                  child: Card(
-                    child: FutureBuilder<List<Tips>>(
-                      future: informProv.getTips(),
-                      builder: (context, snapshot) {
-                        var state = snapshot.connectionState;
-                        if (state != ConnectionState.done) {
-                          return Center(child: CircularProgressIndicator());
-                        } else if (snapshot.hasData) {
-                          return snapshot.data.isEmpty
-                              ? NoData(
-                                  msg: 'Tidak Ada Data!',
-                                )
-                              : _buildListBuilder(snapshot);
-                        } else if (snapshot.hasError) {
-                          return Center(child: Text(snapshot.error.toString()));
-                        } else {
-                          return Text('');
-                        }
-                      },
+      body: Container(
+        width: size.width,
+        height: size.height,
+        color: Colors.grey[100],
+        child: Stack(children: [
+          BackGround(
+            title: 'Info And Tips Sehat',
+          ),
+          Container(
+            margin: EdgeInsets.only(top: 100),
+            width: size.width,
+            height: size.height,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 20),
+                    width: size.width,
+                    height: size.height - (70 + kToolbarHeight * 2),
+                    child: Card(
+                      child: FutureBuilder<List<Tips>>(
+                        future: informProv.getTips(),
+                        builder: (context, snapshot) {
+                          var state = snapshot.connectionState;
+                          if (state != ConnectionState.done) {
+                            return Center(child: CircularProgressIndicator());
+                          } else if (snapshot.hasData) {
+                            return snapshot.data.isEmpty
+                                ? NoData(
+                                    msg: 'Tidak Ada Data!',
+                                  )
+                                : _buildListBuilder(snapshot);
+                          } else if (snapshot.hasError) {
+                            return Center(
+                                child: Text(snapshot.error.toString()));
+                          } else {
+                            return Text('');
+                          }
+                        },
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-        ),
-      ]),
-    ));
+        ]),
+      ),
+    );
   }
 
   Widget _buildListBuilder(AsyncSnapshot<List<Tips>> snapshot) {

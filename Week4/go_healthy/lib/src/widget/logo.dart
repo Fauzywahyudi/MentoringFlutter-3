@@ -14,7 +14,7 @@ class LogoApp extends StatelessWidget {
         height: size,
         width: size,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Colors.red[100],
           shape: BoxShape.circle,
           image: DecorationImage(
             fit: BoxFit.cover,

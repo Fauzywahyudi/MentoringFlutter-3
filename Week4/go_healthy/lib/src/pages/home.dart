@@ -17,7 +17,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     _widgetOptions.add(HomeTab());
-    // _widgetOptions.add(TransactionTab());
     _widgetOptions.add(InfoTab());
     _widgetOptions.add(ProfilTab());
     super.initState();
@@ -50,36 +49,37 @@ class _HomePageState extends State<HomePage> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
             child: GNav(
-                gap: 8,
-                activeColor: Colors.red,
-                iconSize: 24,
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                duration: Duration(milliseconds: 500),
-                tabBackgroundColor: Colors.grey[800],
-                color: Colors.white,
-                tabs: [
-                  GButton(
-                    icon: LineIcons.home,
-                    text: 'Home',
-                    backgroundColor: Colors.white,
-                  ),
-                  GButton(
-                    icon: LineIcons.info,
-                    text: 'Info',
-                    backgroundColor: Colors.white,
-                  ),
-                  GButton(
-                    icon: LineIcons.user,
-                    text: 'Profile',
-                    backgroundColor: Colors.white,
-                  ),
-                ],
-                selectedIndex: _selectedIndex,
-                onTabChange: (index) {
-                  setState(() {
-                    _selectedIndex = index;
-                  });
-                }),
+              gap: 8,
+              activeColor: Colors.red,
+              iconSize: 24,
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+              duration: Duration(milliseconds: 500),
+              tabBackgroundColor: Colors.grey[800],
+              color: Colors.white,
+              tabs: [
+                GButton(
+                  icon: LineIcons.home,
+                  text: 'Home',
+                  backgroundColor: Colors.white,
+                ),
+                GButton(
+                  icon: LineIcons.info,
+                  text: 'Info',
+                  backgroundColor: Colors.white,
+                ),
+                GButton(
+                  icon: LineIcons.user,
+                  text: 'Profile',
+                  backgroundColor: Colors.white,
+                ),
+              ],
+              selectedIndex: _selectedIndex,
+              onTabChange: (index) {
+                setState(() {
+                  _selectedIndex = index;
+                });
+              },
+            ),
           ),
         ),
       ),

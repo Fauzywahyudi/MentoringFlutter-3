@@ -54,10 +54,13 @@ class _DetailBeritaState extends State<DetailBerita> {
                 ),
               ),
               Card(
-                child: Text(
-                  widget.model.isiBerita,
-                  textAlign: TextAlign.justify,
-                  style: TextStyle(),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    widget.model.isiBerita,
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(),
+                  ),
                 ),
               )
             ],

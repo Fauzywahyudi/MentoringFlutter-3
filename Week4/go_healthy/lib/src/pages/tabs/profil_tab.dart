@@ -31,90 +31,91 @@ class _ProfilTabState extends State<ProfilTab> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-        body: Container(
-      width: size.width,
-      height: size.height,
-      color: Colors.grey[100],
-      child: Stack(children: [
-        BackGround(
-          title: 'Profile',
-        ),
-        Container(
-          margin: EdgeInsets.only(top: 100),
-          width: size.width,
-          height: size.height,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 20),
-                  child: Column(
-                    children: [
-                      Card(
-                        child: Column(
-                          children: [
-                            ListTile(
-                              leading: Icon(
-                                Icons.person,
-                                color: Colors.red,
-                              ),
-                              title: Text(
-                                _user.namaLengkap ?? '',
-                                style: textMenu.copyWith(color: Colors.red),
-                              ),
-                              subtitle: Text('Nama'),
-                            ),
-                            ListTile(
-                              leading: Icon(
-                                Icons.email,
-                                color: Colors.red,
-                              ),
-                              title: Text(
-                                _user.email ?? '',
-                                style: textMenu.copyWith(color: Colors.red),
-                              ),
-                              subtitle: Text('Email'),
-                            ),
-                            ListTile(
-                              leading: Icon(
-                                Icons.wc,
-                                color: Colors.red,
-                              ),
-                              title: Text(
-                                _user.jenisKelamin ?? '-',
-                                style: textMenu.copyWith(color: Colors.red),
-                              ),
-                              subtitle: Text('Jenis Kelamin'),
-                            ),
-                            ListTile(
-                              leading: Icon(
-                                Icons.location_on,
-                                color: Colors.red,
-                              ),
-                              title: Text(
-                                _user.alamat ?? '-',
-                                style: textMenu.copyWith(color: Colors.red),
-                              ),
-                              subtitle: Text('Alamat'),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 15),
-                      buildListTile(
-                          'Edit Profil', _onEditProfile, FontAwesomeIcons.edit),
-                      SizedBox(height: 15),
-                      buildListTile(
-                          'Logout', _onLogout, FontAwesomeIcons.powerOff),
-                    ],
-                  ),
-                )
-              ],
-            ),
+      body: Container(
+        width: size.width,
+        height: size.height,
+        color: Colors.grey[100],
+        child: Stack(children: [
+          BackGround(
+            title: 'Profile',
           ),
-        )
-      ]),
-    ));
+          Container(
+            margin: EdgeInsets.only(top: 100),
+            width: size.width,
+            height: size.height,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                      children: [
+                        Card(
+                          child: Column(
+                            children: [
+                              ListTile(
+                                leading: Icon(
+                                  Icons.person,
+                                  color: Colors.red,
+                                ),
+                                title: Text(
+                                  _user.namaLengkap ?? '',
+                                  style: textMenu.copyWith(color: Colors.red),
+                                ),
+                                subtitle: Text('Nama'),
+                              ),
+                              ListTile(
+                                leading: Icon(
+                                  Icons.email,
+                                  color: Colors.red,
+                                ),
+                                title: Text(
+                                  _user.email ?? '',
+                                  style: textMenu.copyWith(color: Colors.red),
+                                ),
+                                subtitle: Text('Email'),
+                              ),
+                              ListTile(
+                                leading: Icon(
+                                  Icons.wc,
+                                  color: Colors.red,
+                                ),
+                                title: Text(
+                                  _user.jenisKelamin ?? '-',
+                                  style: textMenu.copyWith(color: Colors.red),
+                                ),
+                                subtitle: Text('Jenis Kelamin'),
+                              ),
+                              ListTile(
+                                leading: Icon(
+                                  Icons.location_on,
+                                  color: Colors.red,
+                                ),
+                                title: Text(
+                                  _user.alamat ?? '-',
+                                  style: textMenu.copyWith(color: Colors.red),
+                                ),
+                                subtitle: Text('Alamat'),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 15),
+                        buildListTile('Edit Profil', _onEditProfile,
+                            FontAwesomeIcons.edit),
+                        SizedBox(height: 15),
+                        buildListTile(
+                            'Logout', _onLogout, FontAwesomeIcons.powerOff),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+          )
+        ]),
+      ),
+    );
   }
 
   Widget buildListTile(String title, VoidCallback onTap, IconData icon) {
@@ -139,10 +140,11 @@ class _ProfilTabState extends State<ProfilTab> {
 
   Future _onEditProfile() async {
     await showDialog(
-        context: context,
-        builder: (context) => DialogEditProfil(
-              user: _user,
-            ));
+      context: context,
+      builder: (context) => DialogEditProfil(
+        user: _user,
+      ),
+    );
     getUser();
   }
 }

@@ -54,7 +54,11 @@ class _FormLoginState extends State<FormLogin> with RegisterValidation {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       const SizedBox(height: 50.0),
-                      Container(child: Center(child: new LogoApp(size: 100))),
+                      Container(
+                        child: Center(
+                          child: new LogoApp(size: 100),
+                        ),
+                      ),
                       const SizedBox(height: 10.0),
                       new TexApp(),
                       const SizedBox(height: 50.0),
@@ -80,8 +84,9 @@ class _FormLoginState extends State<FormLogin> with RegisterValidation {
                         focusNode: _focPassword,
                         obscureText: _obscurePass,
                         decoration: inputDecoration('Password').copyWith(
-                            suffixIcon: IconButton(
-                                icon: Icon(_iconPass), onPressed: setObscure)),
+                          suffixIcon: IconButton(
+                              icon: Icon(_iconPass), onPressed: setObscure),
+                        ),
                         validator: validatePassword,
                         onSaved: (value) {
                           _password = value;
@@ -115,8 +120,9 @@ class _FormLoginState extends State<FormLogin> with RegisterValidation {
     if (formKey.currentState.validate()) {
       formKey.currentState.save();
       UserProvider provider = UserProvider();
-      final response =
-          await provider.onLogin(User(email: _email, password: _password));
+      final response = await provider.onLogin(
+        User(email: _email, password: _password),
+      );
       if (response != null) {
         Router.navigator
             .pushNamedAndRemoveUntil(Router.homePage, (route) => false);
