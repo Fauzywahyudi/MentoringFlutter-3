@@ -5,10 +5,14 @@ import 'package:go_healthy/src/model/tips.dart';
 import 'package:go_healthy/src/provider/informasi_provider.dart';
 import 'package:go_healthy/src/theme/decoration.dart';
 import 'package:go_healthy/src/widget/background.dart';
+import 'package:go_healthy/src/widget/button.dart';
 import 'package:go_healthy/src/widget/text.dart';
 import 'package:flutter/material.dart';
 
 class InfoTab extends StatefulWidget {
+  final bool isAdmin;
+
+  const InfoTab({this.isAdmin = false});
   @override
   _InfoTabState createState() => _InfoTabState();
 }
@@ -20,6 +24,12 @@ class _InfoTabState extends State<InfoTab> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
+      floatingActionButton: widget.isAdmin
+          ? FloatingActionButton(
+              child: Icon(Icons.add),
+              onPressed: () {},
+            )
+          : null,
       body: Container(
         width: size.width,
         height: size.height,
@@ -28,6 +38,11 @@ class _InfoTabState extends State<InfoTab> with TickerProviderStateMixin {
           BackGround(
             title: 'Info And Tips Sehat',
           ),
+          widget.isAdmin
+              ? BackIconButton(
+                  onPressed: () => Navigator.pop(context),
+                )
+              : Container(),
           Container(
             margin: EdgeInsets.only(top: 100),
             width: size.width,
@@ -38,7 +53,8 @@ class _InfoTabState extends State<InfoTab> with TickerProviderStateMixin {
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 20),
                     width: size.width,
-                    height: size.height - (70 + kToolbarHeight * 2),
+                    height: size.height -
+                        (70 + kToolbarHeight * (widget.isAdmin ? 1 : 2)),
                     child: Card(
                       child: FutureBuilder<List<Tips>>(
                         future: informProv.getTips(),

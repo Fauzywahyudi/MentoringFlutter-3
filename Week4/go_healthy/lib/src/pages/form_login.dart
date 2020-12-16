@@ -1,5 +1,6 @@
 import 'package:go_healthy/src/config/router.gr.dart';
 import 'package:go_healthy/src/model/user.dart';
+import 'package:go_healthy/src/provider/shared_preference.dart';
 import 'package:go_healthy/src/provider/user_provider.dart';
 import 'package:go_healthy/src/res/assets.dart';
 import 'package:go_healthy/src/theme/decoration.dart';
@@ -17,11 +18,14 @@ class FormLogin extends StatefulWidget {
 class _FormLoginState extends State<FormLogin> with RegisterValidation {
   final formKey = GlobalKey<FormState>();
 
+  final dataShared = DataShared();
+
   var _tecEmail = TextEditingController();
   var _tecPassword = TextEditingController();
 
   var _focEmail = FocusNode();
   var _focPassword = FocusNode();
+  User user = User();
 
   String _email;
   String _password;
@@ -29,6 +33,13 @@ class _FormLoginState extends State<FormLogin> with RegisterValidation {
   bool _isLoading = false;
   IconData get _iconPass =>
       _obscurePass ? Icons.visibility : Icons.visibility_off;
+
+  @override
+  void initState() {
+    user = getInfoAdmin();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -120,12 +131,18 @@ class _FormLoginState extends State<FormLogin> with RegisterValidation {
     if (formKey.currentState.validate()) {
       formKey.currentState.save();
       UserProvider provider = UserProvider();
-      final response = await provider.onLogin(
-        User(email: _email, password: _password),
-      );
-      if (response != null) {
+      if (_email == user.email && _password == user.password) {
+        await dataShared.setUserPref(user);
         Router.navigator
-            .pushNamedAndRemoveUntil(Router.homePage, (route) => false);
+            .pushNamedAndRemoveUntil(Router.homeAdmin, (route) => false);
+      } else {
+        final response = await provider.onLogin(
+          User(email: _email, password: _password),
+        );
+        if (response != null) {
+          Router.navigator
+              .pushNamedAndRemoveUntil(Router.homePage, (route) => false);
+        }
       }
     }
     setLoading();

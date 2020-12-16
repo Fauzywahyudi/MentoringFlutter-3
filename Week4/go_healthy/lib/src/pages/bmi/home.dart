@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_healthy/src/config/router.gr.dart';
+import 'package:go_healthy/src/widget/button.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePageBMI extends StatefulWidget {
@@ -66,13 +67,20 @@ class _HomePageBMIState extends State<HomePageBMI> {
       backgroundColor: themeColor,
       floatingActionButton: !isShowForm || validasi ? _buildFAB() : null,
       body: SafeArea(
-        child: Container(
-            color: Colors.white,
-            height: media.size.height,
-            width: media.size.width,
-            child: SingleChildScrollView(
-              child: isPotrait ? _orienPotrait() : _orienLandscape(),
-            )),
+        child: Stack(
+          children: [
+            Container(
+                color: Colors.white,
+                height: media.size.height,
+                width: media.size.width,
+                child: SingleChildScrollView(
+                  child: isPotrait ? _orienPotrait() : _orienLandscape(),
+                )),
+            BackIconButton(
+              onPressed: () => Navigator.pop(context),
+            )
+          ],
+        ),
       ),
     );
   }

@@ -9,6 +9,9 @@ import 'package:go_healthy/src/widget/button.dart';
 import 'package:go_healthy/src/widget/text.dart';
 
 class BeritaKesehatan extends StatefulWidget {
+  final bool isAdmin;
+
+  const BeritaKesehatan({this.isAdmin = false});
   @override
   _BeritaKesehatanState createState() => _BeritaKesehatanState();
 }
@@ -31,6 +34,12 @@ class _BeritaKesehatanState extends State<BeritaKesehatan> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
+      floatingActionButton: widget.isAdmin
+          ? FloatingActionButton(
+              child: Icon(Icons.add),
+              onPressed: () {},
+            )
+          : null,
       body: Container(
         width: size.width,
         height: size.height,

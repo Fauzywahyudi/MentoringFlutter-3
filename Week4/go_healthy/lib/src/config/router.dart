@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route_annotations.dart';
+import 'package:go_healthy/src/pages/admin/home_admin.dart';
 import 'package:go_healthy/src/pages/berita/berita_kesehatan.dart';
 import 'package:go_healthy/src/pages/bmi/home.dart';
 import 'package:go_healthy/src/pages/bmi/result.dart';
@@ -11,6 +12,7 @@ import 'package:go_healthy/src/pages/login.dart';
 import 'package:go_healthy/src/pages/onboarding.dart';
 import 'package:go_healthy/src/pages/register.dart';
 import 'package:go_healthy/src/pages/splashscreen.dart';
+import 'package:go_healthy/src/pages/tabs/info_tabs.dart';
 
 @autoRouter
 class $Router {
@@ -27,4 +29,6 @@ class $Router {
   IstilahKesehatan istilahKesehatan;
   BeritaKesehatan beritaKesehatan;
   DetailBerita detailBerita;
+  HomeAdmin homeAdmin;
+  InfoTab infoTab;
 }

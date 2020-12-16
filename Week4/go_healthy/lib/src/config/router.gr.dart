@@ -21,6 +21,8 @@ import 'package:go_healthy/src/pages/istilah/istilah.dart';
 import 'package:go_healthy/src/pages/berita/berita_kesehatan.dart';
 import 'package:go_healthy/src/pages/berita/detail_berita.dart';
 import 'package:go_healthy/src/model/berita.dart';
+import 'package:go_healthy/src/pages/admin/home_admin.dart';
+import 'package:go_healthy/src/pages/tabs/info_tabs.dart';
 
 class Router {
   static const initialPage = '/';
@@ -35,6 +37,8 @@ class Router {
   static const istilahKesehatan = '/istilah-kesehatan';
   static const beritaKesehatan = '/berita-kesehatan';
   static const detailBerita = '/detail-berita';
+  static const homeAdmin = '/home-admin';
+  static const infoTab = '/info-tab';
   static GlobalKey<NavigatorState> get navigatorKey =>
       getNavigatorKey<Router>();
   static NavigatorState get navigator => navigatorKey.currentState;
@@ -97,13 +101,21 @@ class Router {
           settings: settings,
         );
       case Router.istilahKesehatan:
+        if (hasInvalidArgs<bool>(args)) {
+          return misTypedArgsRoute<bool>(args);
+        }
+        final typedArgs = args as bool ?? false;
         return MaterialPageRoute(
-          builder: (_) => IstilahKesehatan(),
+          builder: (_) => IstilahKesehatan(isAdmin: typedArgs),
           settings: settings,
         );
       case Router.beritaKesehatan:
+        if (hasInvalidArgs<bool>(args)) {
+          return misTypedArgsRoute<bool>(args);
+        }
+        final typedArgs = args as bool ?? false;
         return MaterialPageRoute(
-          builder: (_) => BeritaKesehatan(),
+          builder: (_) => BeritaKesehatan(isAdmin: typedArgs),
           settings: settings,
         );
       case Router.detailBerita:
@@ -113,6 +125,20 @@ class Router {
         final typedArgs = args as Berita;
         return MaterialPageRoute(
           builder: (_) => DetailBerita(model: typedArgs),
+          settings: settings,
+        );
+      case Router.homeAdmin:
+        return MaterialPageRoute(
+          builder: (_) => HomeAdmin(),
+          settings: settings,
+        );
+      case Router.infoTab:
+        if (hasInvalidArgs<bool>(args)) {
+          return misTypedArgsRoute<bool>(args);
+        }
+        final typedArgs = args as bool ?? false;
+        return MaterialPageRoute(
+          builder: (_) => InfoTab(isAdmin: typedArgs),
           settings: settings,
         );
       default:

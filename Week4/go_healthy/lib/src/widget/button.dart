@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_healthy/src/theme/decoration.dart';
 
 class MyButton extends StatelessWidget {
   final String text;
@@ -46,14 +47,19 @@ class BackIconButton extends StatelessWidget {
       top: 20,
       left: 0,
       child: SafeArea(
-        child: FloatingActionButton(
-          backgroundColor: Colors.white,
-          child: Icon(
-            Icons.arrow_back_ios,
-            color: Colors.red,
+        child: InkWell(
+          onTap: onPressed,
+          child: Container(
+            height: 45,
+            width: 45,
+            decoration: circleContainer.copyWith(color: Colors.white),
+            child: Center(
+              child: Icon(
+                Icons.arrow_back_ios,
+                color: Colors.red,
+              ),
+            ),
           ),
-          onPressed: onPressed,
-          mini: true,
         ),
       ),
     );

@@ -4,12 +4,12 @@ import 'package:go_healthy/src/provider/shared_preference.dart';
 import 'package:go_healthy/src/theme/decoration.dart';
 import 'package:go_healthy/src/widget/background.dart';
 
-class HomeTab extends StatefulWidget {
+class HomeAdmin extends StatefulWidget {
   @override
-  _HomeTabState createState() => _HomeTabState();
+  _HomeAdminState createState() => _HomeAdminState();
 }
 
-class _HomeTabState extends State<HomeTab> {
+class _HomeAdminState extends State<HomeAdmin> {
   String _nama = '';
   final dataShared = DataShared();
 
@@ -50,28 +50,34 @@ class _HomeTabState extends State<HomeTab> {
                   children: [
                     Row(
                       children: [
-                        MenuHome(
-                          title: 'Kalkulator \nBMI',
-                          image: 'icon_bmi.png',
-                          onTap: () =>
-                              Router.navigator.pushNamed(Router.homePageBMI),
-                        ),
-                        MenuHome(
+                        _MenuHome(
                           title: 'Istilah \Kesehatan',
                           image: 'icon_kesehatan.png',
                           onTap: () => Router.navigator.pushNamed(
                               Router.istilahKesehatan,
-                              arguments: false),
+                              arguments: true),
+                        ),
+                        _MenuHome(
+                          title: 'Berita \nKesehatan',
+                          image: 'news.jpg',
+                          onTap: () => Router.navigator.pushNamed(
+                              Router.beritaKesehatan,
+                              arguments: true),
                         ),
                       ],
                     ),
                     Row(
                       children: [
-                        MenuHome(
-                          title: 'Berita \nKesehatan',
+                        _MenuHome(
+                          title: 'Tips \nKesehatan',
                           image: 'news.jpg',
                           onTap: () => Router.navigator
-                              .pushNamed(Router.beritaKesehatan),
+                              .pushNamed(Router.infoTab, arguments: true),
+                        ),
+                        _MenuHome(
+                          title: 'Log Out \n',
+                          image: 'logout.png',
+                          onTap: () => _onLogout(),
                         ),
                       ],
                     ),
@@ -84,13 +90,20 @@ class _HomeTabState extends State<HomeTab> {
       ),
     );
   }
+
+  void _onLogout() async {
+    DataShared dataShared = DataShared();
+    await dataShared.clearAll();
+    Router.navigator
+        .pushNamedAndRemoveUntil(Router.loginPage, (route) => false);
+  }
 }
 
-class MenuHome extends StatelessWidget {
+class _MenuHome extends StatelessWidget {
   final VoidCallback onTap;
   final String title;
   final String image;
-  const MenuHome({
+  const _MenuHome({
     @required this.onTap,
     @required this.title,
     @required this.image,

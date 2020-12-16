@@ -27,7 +27,11 @@ class _SplashScreenState extends State<SplashScreen> {
       if (value == null) {
         Router.navigator.pushReplacementNamed(Router.loginPage);
       } else {
-        Router.navigator.pushReplacementNamed(Router.homePage);
+        int id = await dataShared.getId();
+        if (id == 0)
+          Router.navigator.pushReplacementNamed(Router.homeAdmin);
+        else
+          Router.navigator.pushReplacementNamed(Router.homePage);
       }
     }
   }

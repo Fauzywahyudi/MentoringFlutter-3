@@ -20,4 +20,10 @@ class Api {
   static const getBerita = main + 'getBerita.php';
   static const getIstilah = main + 'getIstilah.php';
   static const getTips = main + 'getTips.php';
+
+  // istilah
+
+  static const addIstilah = main + 'addIstilah.php';
+  static const updateIstilah = main + 'updateIstilah.php';
+  static const deleteIstilah = main + 'deleteIstilah.php';
 }
