@@ -8,9 +8,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sql = '';
 
     if (empty($keyword)) {
-        $sql = $kon->query("SELECT * FROM `istilah`");
+        $sql = $kon->query("SELECT * FROM `istilah` ORDER BY nama_istilah ASC");
     } else {
-        $sql = $kon->query("SELECT * FROM `istilah` WHERE nama_istilah LIKE '%$keyword%'");
+        $sql = $kon->query("SELECT * FROM `istilah` WHERE nama_istilah LIKE '%$keyword%' ORDER BY nama_istilah ASC");
     }
 
     while ($fetchData = $sql->fetch_assoc()) {
