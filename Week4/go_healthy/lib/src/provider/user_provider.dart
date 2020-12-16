@@ -10,6 +10,7 @@ class UserProvider {
   static const _email = 'email';
   static const _nama = 'nama';
   static const _password = 'password';
+  static const _passwordNew = 'passwordNew';
   static const _idUser = 'idUser';
   static const _alamat = 'alamat';
   static const _jenisKelamin = 'jenisKelamin';
@@ -39,6 +40,17 @@ class UserProvider {
     final response = await http.post(Api.login, body: {
       _email: model.email,
       _password: model.password,
+    });
+    final user = await myResponse.userResponse(response);
+    return user;
+  }
+
+  Future<User> onEditPassword(String passLama, String passBaru) async {
+    final id = await dataShared.getId();
+    final response = await http.post(Api.editPassword, body: {
+      _idUser: id.toString(),
+      _password: passLama,
+      _passwordNew: passBaru,
     });
     final user = await myResponse.userResponse(response);
     return user;

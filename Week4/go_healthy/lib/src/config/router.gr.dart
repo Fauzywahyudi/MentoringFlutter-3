@@ -23,6 +23,8 @@ import 'package:go_healthy/src/pages/berita/detail_berita.dart';
 import 'package:go_healthy/src/model/berita.dart';
 import 'package:go_healthy/src/pages/admin/home_admin.dart';
 import 'package:go_healthy/src/pages/tabs/info_tabs.dart';
+import 'package:go_healthy/src/pages/berita/add_berita.dart';
+import 'package:go_healthy/src/pages/berita/edit_berita.dart';
 
 class Router {
   static const initialPage = '/';
@@ -39,6 +41,8 @@ class Router {
   static const detailBerita = '/detail-berita';
   static const homeAdmin = '/home-admin';
   static const infoTab = '/info-tab';
+  static const addBerita = '/add-berita';
+  static const editBerita = '/edit-berita';
   static GlobalKey<NavigatorState> get navigatorKey =>
       getNavigatorKey<Router>();
   static NavigatorState get navigator => navigatorKey.currentState;
@@ -119,12 +123,13 @@ class Router {
           settings: settings,
         );
       case Router.detailBerita:
-        if (hasInvalidArgs<Berita>(args, isRequired: true)) {
-          return misTypedArgsRoute<Berita>(args);
+        if (hasInvalidArgs<DetailBeritaArguments>(args, isRequired: true)) {
+          return misTypedArgsRoute<DetailBeritaArguments>(args);
         }
-        final typedArgs = args as Berita;
+        final typedArgs = args as DetailBeritaArguments;
         return MaterialPageRoute(
-          builder: (_) => DetailBerita(model: typedArgs),
+          builder: (_) =>
+              DetailBerita(model: typedArgs.model, isAdmin: typedArgs.isAdmin),
           settings: settings,
         );
       case Router.homeAdmin:
@@ -139,6 +144,20 @@ class Router {
         final typedArgs = args as bool ?? false;
         return MaterialPageRoute(
           builder: (_) => InfoTab(isAdmin: typedArgs),
+          settings: settings,
+        );
+      case Router.addBerita:
+        return MaterialPageRoute(
+          builder: (_) => AddBerita(),
+          settings: settings,
+        );
+      case Router.editBerita:
+        if (hasInvalidArgs<Berita>(args, isRequired: true)) {
+          return misTypedArgsRoute<Berita>(args);
+        }
+        final typedArgs = args as Berita;
+        return MaterialPageRoute(
+          builder: (_) => EditBerita(model: typedArgs),
           settings: settings,
         );
       default:
@@ -158,4 +177,11 @@ class ResultBMIArguments {
   final double tb;
   ResultBMIArguments(
       {@required this.isMale, @required this.bb, @required this.tb});
+}
+
+//DetailBerita arguments holder class
+class DetailBeritaArguments {
+  final Berita model;
+  final bool isAdmin;
+  DetailBeritaArguments({@required this.model, this.isAdmin = false});
 }

@@ -1,11 +1,14 @@
 import 'dart:convert';
 
+import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:go_healthy/src/model/berita.dart';
 import 'package:go_healthy/src/model/informasi.dart';
 import 'package:go_healthy/src/model/istilah.dart';
 import 'package:go_healthy/src/model/tips.dart';
 import 'package:go_healthy/src/model/user.dart';
 import 'package:go_healthy/src/provider/shared_preference.dart';
+import 'package:go_healthy/src/widget/my_awesome_dialog.dart';
 import 'package:go_healthy/src/widget/toast.dart';
 import 'package:http/http.dart';
 

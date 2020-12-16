@@ -4,10 +4,13 @@ require 'koneksi.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $response = array();
     $data = array();
-    $istilah = $_POST['istilah'];
     $id = $_POST['id'];
-    $penjelasan = $_POST['penjelasan'];
-    $query = "UPDATE `istilah` SET `nama_istilah`='$istilah',`penjelasan`='$penjelasan' WHERE id_istilah='$id'";
+    $judul = $_POST['judul'];
+    $penulis = $_POST['penulis'];
+    $sumber = $_POST['sumber'];
+    $isi = $_POST['isi'];
+    $image = $_POST['image'];
+    $query = "UPDATE `berita` SET `judul`='$judul',`isi_berita`='$isi',`penulis`='$penulis',`sumber`='$sumber',`image`='$image' WHERE id_berita='$id'";
 
     $result = $kon->query($query);
 

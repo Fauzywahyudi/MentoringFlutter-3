@@ -45,6 +45,8 @@ dependencies:
   eva_icons_flutter: ^2.0.1
   google_fonts: ^1.1.0
   swipedetector: ^1.2.0
+  image_picker: ^0.6.7+15
+  dio: any
 
 dev_dependencies:
   flutter_test:

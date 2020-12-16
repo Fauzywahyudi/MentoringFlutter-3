@@ -6,6 +6,7 @@ import 'package:go_healthy/src/widget/background.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_healthy/src/widget/dialog.dart';
+import 'package:go_healthy/src/widget/my_awesome_dialog.dart';
 
 class ProfilTab extends StatefulWidget {
   @override
@@ -104,8 +105,14 @@ class _ProfilTabState extends State<ProfilTab> {
                         buildListTile('Edit Profil', _onEditProfile,
                             FontAwesomeIcons.edit),
                         SizedBox(height: 15),
+                        buildListTile('Edit Password', _onEditPassword,
+                            FontAwesomeIcons.edit),
+                        SizedBox(height: 15),
                         buildListTile(
-                            'Logout', _onLogout, FontAwesomeIcons.powerOff),
+                            'Logout',
+                            () => awesomeLogout(context, 'Logout',
+                                'Yakin untuk Logout?', _onLogout),
+                            FontAwesomeIcons.powerOff),
                       ],
                     ),
                   )
@@ -145,6 +152,12 @@ class _ProfilTabState extends State<ProfilTab> {
         user: _user,
       ),
     );
+    getUser();
+  }
+
+  Future _onEditPassword() async {
+    await showDialog(
+        context: context, builder: (context) => DialogEditPassword());
     getUser();
   }
 }

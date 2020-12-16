@@ -4,6 +4,7 @@ import 'package:go_healthy/src/provider/user_provider.dart';
 import 'package:go_healthy/src/theme/decoration.dart';
 import 'package:go_healthy/src/validation/register_validation.dart';
 import 'package:flutter/material.dart';
+import 'package:go_healthy/src/widget/toast.dart';
 
 class DialogEditProfil extends StatefulWidget {
   final User user;
@@ -125,7 +126,7 @@ class _DialogEditProfilState extends State<DialogEditProfil>
       actions: <Widget>[
         RaisedButton(
             child: Text(
-              "Konfirmasi",
+              "Confirm",
               style:
                   TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
             ),
@@ -157,4 +158,102 @@ class _DialogEditProfilState extends State<DialogEditProfil>
       }
     }
   }
+}
+
+class DialogEditPassword extends StatefulWidget {
+  @override
+  _DialogEditPasswordState createState() => _DialogEditPasswordState();
+}
+
+class _DialogEditPasswordState extends State<DialogEditPassword>
+    with RegisterValidation {
+  final formKey = GlobalKey<FormState>();
+  var _tecPassLama = TextEditingController();
+  var _tecPassBaru = TextEditingController();
+
+  String _passLama;
+  String _passBaru;
+
+  bool _obscLama = true;
+  bool _obscBaru = true;
+
+  IconData get _iconLama => _obscLama ? Icons.visibility : Icons.visibility_off;
+  IconData get _iconBaru => _obscBaru ? Icons.visibility : Icons.visibility_off;
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      backgroundColor: Colors.red,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+      contentPadding: EdgeInsets.symmetric(horizontal: 30),
+      title: Text('Ganti Password', style: textWhite),
+      actions: [
+        FlatButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text(
+              'Cancel',
+              style: textWhite,
+            )),
+        FlatButton(
+            onPressed: () => onConfirm(),
+            child: Text(
+              'Confirm',
+              style: textWhite,
+            )),
+        SizedBox(width: 10),
+      ],
+      content: SingleChildScrollView(
+        child: Form(
+          key: formKey,
+          child: Column(
+            children: [
+              SizedBox(height: 20),
+              TextFormField(
+                controller: _tecPassLama,
+                obscureText: _obscLama,
+                decoration: inputDecoration('Old Password').copyWith(
+                  suffixIcon: IconButton(
+                      icon: Icon(_iconLama), onPressed: setObscureLama),
+                ),
+                validator: validatePassword,
+                onSaved: (value) {
+                  _passLama = value;
+                },
+              ),
+              SizedBox(height: 10),
+              TextFormField(
+                controller: _tecPassBaru,
+                obscureText: _obscBaru,
+                decoration: inputDecoration('New Password').copyWith(
+                  suffixIcon: IconButton(
+                      icon: Icon(_iconBaru), onPressed: setObscureBaru),
+                ),
+                validator: validatePassword,
+                onSaved: (value) {
+                  _passBaru = value;
+                },
+              ),
+              SizedBox(height: 20),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  void onConfirm() async {
+    if (formKey.currentState.validate()) {
+      formKey.currentState.save();
+      UserProvider provider = UserProvider();
+      final response = await provider.onEditPassword(_passLama, _passBaru);
+      if (response != null) {
+        DataShared dataShared = DataShared();
+        await dataShared.setUserPref(response);
+        Navigator.pop(context);
+      }
+    }
+  }
+
+  void setObscureLama() => setState(() => _obscLama = !_obscLama);
+  void setObscureBaru() => setState(() => _obscBaru = !_obscBaru);
 }

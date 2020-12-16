@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $response = array();
     $data = array();
 
-    $sql = $kon->query("SELECT * FROM berita");
+    $sql = $kon->query("SELECT * FROM berita ORDER BY posted_at DESC");
     while ($fetchData = $sql->fetch_assoc()) {
         $data[] = $fetchData;
     }

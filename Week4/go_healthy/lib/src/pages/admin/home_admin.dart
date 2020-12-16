@@ -3,6 +3,7 @@ import 'package:go_healthy/src/config/router.gr.dart';
 import 'package:go_healthy/src/provider/shared_preference.dart';
 import 'package:go_healthy/src/theme/decoration.dart';
 import 'package:go_healthy/src/widget/background.dart';
+import 'package:go_healthy/src/widget/my_awesome_dialog.dart';
 
 class HomeAdmin extends StatefulWidget {
   @override
@@ -77,7 +78,8 @@ class _HomeAdminState extends State<HomeAdmin> {
                         _MenuHome(
                           title: 'Log Out \n',
                           image: 'logout.png',
-                          onTap: () => _onLogout(),
+                          onTap: () => awesomeLogout(context, 'Logout',
+                              'Yakin untuk Logout?', _onLogout),
                         ),
                       ],
                     ),

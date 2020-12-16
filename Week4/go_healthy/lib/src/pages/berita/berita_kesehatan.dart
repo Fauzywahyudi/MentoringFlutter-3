@@ -37,7 +37,10 @@ class _BeritaKesehatanState extends State<BeritaKesehatan> {
       floatingActionButton: widget.isAdmin
           ? FloatingActionButton(
               child: Icon(Icons.add),
-              onPressed: () {},
+              onPressed: () async {
+                await Router.navigator.pushNamed(Router.addBerita).then(
+                    (value) => value == null ? print('') : handleRefresh());
+              },
             )
           : null,
       body: Container(
@@ -127,8 +130,14 @@ class _BeritaKesehatanState extends State<BeritaKesehatan> {
               children: [
                 Text('by ' + model.penulis),
                 FlatButton(
-                    onPressed: () => Router.navigator
-                        .pushNamed(Router.detailBerita, arguments: model),
+                    onPressed: () async {
+                      await Router.navigator
+                          .pushNamed(Router.detailBerita,
+                              arguments: DetailBeritaArguments(
+                                  model: model, isAdmin: widget.isAdmin))
+                          .then((value) =>
+                              value == null ? print('') : handleRefresh());
+                    },
                     child: Text(
                       'Selengkapnya',
                       style: TextStyle(color: Colors.blue),

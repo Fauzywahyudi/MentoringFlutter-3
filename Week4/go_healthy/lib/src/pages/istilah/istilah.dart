@@ -118,20 +118,24 @@ class _IstilahKesehatanState extends State<IstilahKesehatan> {
 
   Widget _buildItemList(Istilah model) {
     return GestureDetector(
-      onLongPress: () => showDialog(
-        context: context,
-        child: DialogIstilah(
-          istilah: model,
-          state: StateIstilah.hapus,
-        ),
-      ).then((value) => handleRefresh()),
-      onDoubleTap: () => showDialog(
-        context: context,
-        child: DialogIstilah(
-          istilah: model,
-          state: StateIstilah.edit,
-        ),
-      ).then((value) => handleRefresh()),
+      onLongPress: () => widget.isAdmin
+          ? showDialog(
+              context: context,
+              child: DialogIstilah(
+                istilah: model,
+                state: StateIstilah.hapus,
+              ),
+            ).then((value) => handleRefresh())
+          : null,
+      onDoubleTap: () => widget.isAdmin
+          ? showDialog(
+              context: context,
+              child: DialogIstilah(
+                istilah: model,
+                state: StateIstilah.edit,
+              ),
+            ).then((value) => handleRefresh())
+          : null,
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
         child: Material(
